@@ -558,7 +558,7 @@ class IOLinkMasterListener(object):
             'NotImplementedError' is raised if the method is not implemented.
         """
         raise NotImplementedError('You must define "on_status_change()" to use '
-                                  'the "IOLinkMasterListener" class.')
+            'the "IOLinkMasterListener" class.')
 
     @abstractmethod
     def on_device_found(self, masterboard, device_id, device_position):
@@ -573,4 +573,4 @@ class IOLinkMasterListener(object):
             'NotImplementedError' is raised if the method is not implemented.
         """
         raise NotImplementedError('You must define "on_device_found()" to use '
-                                  'the "IOLinkMasterListener" class.')
+            'the "IOLinkMasterListener" class.')
