@@ -1,0 +1,258 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>wire_st_sdk.iolink.iolink_device &#8212; WireSTSDK 1.0.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for wire_st_sdk.iolink.iolink_device</h1><div class="highlight"><pre>
+<span></span><span class="c1">################################################################################</span>
+<span class="c1"># COPYRIGHT(c) 2018 STMicroelectronics                                         #</span>
+<span class="c1">#                                                                              #</span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without           #</span>
+<span class="c1"># modification, are permitted provided that the following conditions are met:  #</span>
+<span class="c1">#   1. Redistributions of source code must retain the above copyright notice,  #</span>
+<span class="c1">#      this list of conditions and the following disclaimer.                   #</span>
+<span class="c1">#   2. Redistributions in binary form must reproduce the above copyright       #</span>
+<span class="c1">#      notice, this list of conditions and the following disclaimer in the     #</span>
+<span class="c1">#      documentation and/or other materials provided with the distribution.    #</span>
+<span class="c1">#   3. Neither the name of STMicroelectronics nor the names of its             #</span>
+<span class="c1">#      contributors may be used to endorse or promote products derived from    #</span>
+<span class="c1">#      this software without specific prior written permission.                #</span>
+<span class="c1">#                                                                              #</span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;  #</span>
+<span class="c1"># AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE    #</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE   #</span>
+<span class="c1"># ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE    #</span>
+<span class="c1"># LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR          #</span>
+<span class="c1"># CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF         #</span>
+<span class="c1"># SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS     #</span>
+<span class="c1"># INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN      #</span>
+<span class="c1"># CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)      #</span>
+<span class="c1"># ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE   #</span>
+<span class="c1"># POSSIBILITY OF SUCH DAMAGE.                                                  #</span>
+<span class="c1">################################################################################</span>
+
+
+<span class="sd">&quot;&quot;&quot;iolink_device</span>
+
+<span class="sd">The iolink_device module represent a device capable of connecting to an IO-Link</span>
+<span class="sd">masterboard and sending/receiving data to it.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># IMPORT</span>
+
+<span class="kn">from</span> <span class="nn">serial</span> <span class="k">import</span> <span class="n">SerialException</span>
+<span class="kn">from</span> <span class="nn">serial</span> <span class="k">import</span> <span class="n">SerialTimeoutException</span>
+
+<span class="kn">from</span> <span class="nn">wire_st_sdk.iolink.iolink_protocol</span> <span class="k">import</span> <span class="n">IOLinkProtocol</span>
+<span class="kn">from</span> <span class="nn">wire_st_sdk.utils.wire_st_exceptions</span> <span class="k">import</span> <span class="n">InvalidOperationException</span>
+<span class="kn">from</span> <span class="nn">wire_st_sdk.python_utils</span> <span class="k">import</span> <span class="n">lock_for_object</span>
+
+
+<span class="c1"># CLASSES</span>
+
+<div class="viewcode-block" id="IOLinkDevice"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice">[docs]</a><span class="k">class</span> <span class="nc">IOLinkDevice</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;IO-Link Device class.</span>
+
+<span class="sd">    This class manages the commands of a standard IO-Link device.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IOLinkDevice.__init__"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">master</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Constructor.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            master (:class:`wire_st_sdk.iolink.iolink_master.IOLinkMaster`):</span>
+<span class="sd">                Masterboard object.</span>
+<span class="sd">            position (int): Device&#39;s position according to the enumeration on</span>
+<span class="sd">                the masterboard.</span>
+<span class="sd">            id (str): Device&#39;s identifier.</span>
+<span class="sd">            name (str): Device&#39;s name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_master</span> <span class="o">=</span> <span class="n">master</span>
+        <span class="sd">&quot;&quot;&quot;Masterboard object.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">=</span> <span class="n">position</span>
+        <span class="sd">&quot;&quot;&quot;Device&#39;s position according to the enumeration on the masterboard.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="sd">&quot;&quot;&quot;Device&#39;s identifier.&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">name</span></div>
+        <span class="sd">&quot;&quot;&quot;Device&#39;s name.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="IOLinkDevice.get_position"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_position">[docs]</a>    <span class="k">def</span> <span class="nf">get_position</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the device&#39;s position according to the enumeration on the</span>
+<span class="sd">        masterboard.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The device&#39;s position according to the enumeration on the</span>
+<span class="sd">            masterboard.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_position</span>
+
+<div class="viewcode-block" id="IOLinkDevice.get_id"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_id">[docs]</a>    <span class="k">def</span> <span class="nf">get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the device&#39;s identifier.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The device&#39;s identifier.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+<div class="viewcode-block" id="IOLinkDevice.get_name"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_name">[docs]</a>    <span class="k">def</span> <span class="nf">get_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the device&#39;s name.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The device&#39;s name.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+<div class="viewcode-block" id="IOLinkDevice.get_features"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_features">[docs]</a>    <span class="k">def</span> <span class="nf">get_features</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the list of features.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: A list with the available features.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
+<span class="sd">                something with the serial communication does not work.</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">                is raised if the command has not been executed successfully.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">lock_for_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">COMMAND_ICD</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">REQUEST_SLAVE</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> \
+                    <span class="o">+</span> <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">REQUEST_SENSOR_COMMAND</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">COMMAND_ID</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">MESSAGE_CONNECTED</span><span class="p">)</span>
+                
+                <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()[</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">):</span> \
+                    <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">MESSAGE_CONNECTED</span><span class="p">)</span> \
+                    <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">)]</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">)</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">s</span><span class="p">:</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">info</span><span class="p">))[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">COMMAND_END</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">REQUEST_MOD</span><span class="p">)</span>
+
+                <span class="k">return</span> <span class="n">info</span>
+
+        <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
+            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="k">raise</span> <span class="n">e</span>
+
+<div class="viewcode-block" id="IOLinkDevice.get_firmware"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_firmware">[docs]</a>    <span class="k">def</span> <span class="nf">get_firmware</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the version of the firmware.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: The version of the firmware as a string.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
+<span class="sd">                something with the serial communication does not work.</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">                is raised if the command has not been executed successfully.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">lock_for_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">COMMAND_ICD</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">REQUEST_SLAVE</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_position</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> \
+                    <span class="o">+</span> <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">REQUEST_SENSOR_COMMAND</span><span class="p">)</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">COMMAND_ID</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">MESSAGE_CONNECTED</span><span class="p">)</span>
+                
+                <span class="n">info</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()[</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">):</span> \
+                    <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">MESSAGE_CONNECTED</span><span class="p">)</span> \
+                    <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">)]</span>
+                <span class="n">info</span> <span class="o">=</span> <span class="n">info</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">TERMINATOR_SEQ</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="bp">self</span><span class="o">.</span><span class="n">_master</span><span class="o">.</span><span class="n">_execute</span><span class="p">(</span><span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">COMMAND_END</span><span class="p">,</span>
+                    <span class="n">IOLinkProtocol</span><span class="o">.</span><span class="n">REQUEST_MOD</span><span class="p">)</span>
+
+                <span class="k">return</span> <span class="n">info</span>
+
+        <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
+            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div></div>
+            <span class="k">raise</span> <span class="n">e</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Davide Aliprandi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
