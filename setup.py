@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="blue_st_sdk",
-    version="1.1.1",
+    name="wire_st_sdk",
+    version="1.0.0",
     author="Davide Aliprandi",
     author_email="davide.aliprandi@gmail.com",
-    description="Bluetooth Low Energy abstraction library package.",
+    description="Wired connection abstraction library package.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/STMicroelectronics/BlueSTSDK_Python",
+    url="https://github.com/STMicroelectronics/WireSTSDK_Python",
     packages=setuptools.find_packages(),
     license='BSD 3-clause',
     classifiers=[
