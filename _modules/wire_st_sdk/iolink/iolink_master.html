@@ -199,7 +199,7 @@
 
 <span class="kn">from</span> <span class="nn">wire_st_sdk.iolink.iolink_protocol</span> <span class="k">import</span> <span class="n">IOLinkProtocol</span>
 <span class="kn">from</span> <span class="nn">wire_st_sdk.iolink.iolink_sensor</span> <span class="k">import</span> <span class="n">IOLinkSensor</span>
-<span class="kn">from</span> <span class="nn">wire_st_sdk.utils.wire_st_exceptions</span> <span class="k">import</span> <span class="n">InvalidOperationException</span>
+<span class="kn">from</span> <span class="nn">wire_st_sdk.utils.wire_st_exceptions</span> <span class="k">import</span> <span class="n">WireInvalidOperationException</span>
 <span class="kn">from</span> <span class="nn">wire_st_sdk.python_utils</span> <span class="k">import</span> <span class="n">lock</span>
 <span class="kn">from</span> <span class="nn">wire_st_sdk.python_utils</span> <span class="k">import</span> <span class="n">lock_for_object</span>
 
@@ -307,7 +307,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -395,7 +395,7 @@
                 <span class="k">return</span> <span class="kc">True</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkMaster.connect"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_master.IOLinkMaster.connect">[docs]</a>    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -408,7 +408,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -515,7 +515,7 @@
                 <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_answer</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkMaster.disconnect"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_master.IOLinkMaster.disconnect">[docs]</a>    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -570,14 +570,14 @@
 <span class="sd">            otherwise.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># Creating the device.</span>
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="n">lock_for_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s1">&#39;Before trying to get a </span><span class="se">\</span>
+                    <span class="k">raise</span> <span class="n">WireInvalidOperationException</span><span class="p">(</span><span class="s1">&#39;Before trying to get a </span><span class="se">\</span>
 <span class="s1">                        device, connect to the masterboard.&#39;</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="n">device_id</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_devices_id_position_map</span><span class="p">:</span>
@@ -587,7 +587,7 @@
 
                 <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">except</span> <span class="n">InvalidOperationException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+        <span class="k">except</span> <span class="n">WireInvalidOperationException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkMaster.get_device_by_position"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_device_by_position">[docs]</a>    <span class="k">def</span> <span class="nf">get_device_by_position</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device_position</span><span class="p">,</span> <span class="n">device_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -604,7 +604,7 @@
 <span class="sd">            position, None otherwise.</span>
 
 <span class="sd">        Raises:</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">            :exc:`ValueError` if the device position is not allowed.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -612,7 +612,7 @@
         <span class="k">try</span><span class="p">:</span>
             <span class="k">with</span> <span class="n">lock_for_object</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_answer</span><span class="p">()</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
-                    <span class="k">raise</span> <span class="n">InvalidOperationException</span><span class="p">(</span><span class="s1">&#39;Before trying to get a </span><span class="se">\</span>
+                    <span class="k">raise</span> <span class="n">WireInvalidOperationException</span><span class="p">(</span><span class="s1">&#39;Before trying to get a </span><span class="se">\</span>
 <span class="s1">                        device, connect to the masterboard.&#39;</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="n">device_position</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_NUMBER_OF_DEVICES</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
@@ -626,7 +626,7 @@
 
                 <span class="k">return</span> <span class="kc">None</span>
 
-        <span class="k">except</span> <span class="n">InvalidOperationException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+        <span class="k">except</span> <span class="n">WireInvalidOperationException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkMaster.get_answer"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_answer">[docs]</a>    <span class="k">def</span> <span class="nf">get_answer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -701,7 +701,8 @@
         <span class="sd">&quot;&quot;&quot;To be called whenever a masterboard changes its status.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            masterboard (IOLinkMaster): Masterboard that has changed its status.</span>
+<span class="sd">            masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard</span>
+<span class="sd">                that has changed its status.</span>
 <span class="sd">            new_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): New</span>
 <span class="sd">                status.</span>
 <span class="sd">            old_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): Old</span>
@@ -718,7 +719,8 @@
         <span class="sd">&quot;&quot;&quot;To be called whenever a masterboard finds a new device connected.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            masterboard (IOLinkMaster): Masterboard that has found a new device.</span>
+<span class="sd">            masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard</span>
+<span class="sd">                that has found a new device.</span>
 <span class="sd">            device_id (str): New device found.</span>
 <span class="sd">            device_position (int): Position of the new device found.</span>
 

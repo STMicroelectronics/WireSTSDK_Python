@@ -217,7 +217,7 @@ name (str): Device’s name.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -235,7 +235,7 @@ name (str): Device’s name.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -329,7 +329,7 @@ it is connected.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -372,7 +372,7 @@ connected device if the device identifier is correct, None
 otherwise.</dd>
 <dt>Raises:</dt>
 <dd><dl class="first last docutils">
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -397,7 +397,7 @@ connected device if there is a device connected at the given device
 position, None otherwise.</dd>
 <dt>Raises:</dt>
 <dd><dl class="first docutils">
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 <p class="last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if the device position is not allowed.</p>
@@ -458,9 +458,13 @@ notify changes of a masterboard’s status.</p>
 <dd><p>To be called whenever a masterboard finds a new device connected.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd>masterboard (IOLinkMaster): Masterboard that has found a new device.
-device_id (str): New device found.
-device_position (int): Position of the new device found.</dd>
+<dd><dl class="first docutils">
+<dt>masterboard (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMaster</span></code>): Masterboard</dt>
+<dd>that has found a new device.</dd>
+</dl>
+<p class="last">device_id (str): New device found.
+device_position (int): Position of the new device found.</p>
+</dd>
 <dt>Raises:</dt>
 <dd>‘NotImplementedError’ is raised if the method is not implemented.</dd>
 </dl>
@@ -472,11 +476,11 @@ device_position (int): Position of the new device found.</dd>
 <dd><p>To be called whenever a masterboard changes its status.</p>
 <dl class="docutils">
 <dt>Args:</dt>
-<dd><p class="first">masterboard (IOLinkMaster): Masterboard that has changed its status.
-new_status (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMasterStatus</span></code>): New</p>
-<blockquote>
-<div>status.</div></blockquote>
-<dl class="last docutils">
+<dd><dl class="first last docutils">
+<dt>masterboard (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMaster</span></code>): Masterboard</dt>
+<dd>that has changed its status.</dd>
+<dt>new_status (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMasterStatus</span></code>): New</dt>
+<dd>status.</dd>
 <dt>old_status (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMasterStatus</span></code>): Old</dt>
 <dd>status.</dd>
 </dl>
@@ -988,7 +992,7 @@ values.</dd>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1008,7 +1012,7 @@ corresponding vibration values on the three axis [m/s2].</dd>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1028,7 +1032,7 @@ values on X,Y,Z axes [m/s2] as the second element.</dd>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1053,7 +1057,7 @@ types of analysis.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1077,7 +1081,7 @@ types of analysis.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1101,7 +1105,7 @@ types of analysis.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1127,7 +1131,7 @@ FFT analysis.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1151,7 +1155,7 @@ FFT analysis.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>
@@ -1175,7 +1179,7 @@ FFT analysis.</p>
 <dd><dl class="first last docutils">
 <dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
 <dd>something with the serial communication does not work.</dd>
-<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException</span></code></a></dt>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
 <dd>is raised if the command has not been executed successfully.</dd>
 </dl>
 </dd>

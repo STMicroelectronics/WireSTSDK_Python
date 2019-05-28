@@ -196,7 +196,7 @@
 
 <span class="kn">from</span> <span class="nn">wire_st_sdk.iolink.iolink_protocol</span> <span class="k">import</span> <span class="n">IOLinkProtocol</span>
 <span class="kn">from</span> <span class="nn">wire_st_sdk.iolink.iolink_device</span> <span class="k">import</span> <span class="n">IOLinkDevice</span>
-<span class="kn">from</span> <span class="nn">wire_st_sdk.utils.wire_st_exceptions</span> <span class="k">import</span> <span class="n">InvalidOperationException</span>
+<span class="kn">from</span> <span class="nn">wire_st_sdk.utils.wire_st_exceptions</span> <span class="k">import</span> <span class="n">WireInvalidOperationException</span>
 <span class="kn">from</span> <span class="nn">wire_st_sdk.python_utils</span> <span class="k">import</span> <span class="n">lock_for_object</span>
 
 
@@ -238,7 +238,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -281,7 +281,7 @@
                 <span class="k">return</span> <span class="n">info</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">e</span>
 
     <span class="k">def</span> <span class="nf">_bytes_to_floats</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
@@ -310,7 +310,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -338,7 +338,7 @@
                 <span class="k">return</span> <span class="n">info</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.get_tdm"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_tdm">[docs]</a>    <span class="k">def</span> <span class="nf">get_tdm</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -352,7 +352,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -381,7 +381,7 @@
                 <span class="k">return</span> <span class="n">info</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.get_fft"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_fft">[docs]</a>    <span class="k">def</span> <span class="nf">get_fft</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -395,7 +395,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -428,7 +428,7 @@
                 <span class="k">return</span> <span class="n">info</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
     <span class="k">def</span> <span class="nf">_set_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
@@ -444,7 +444,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -478,7 +478,7 @@
                     <span class="ow">in</span> <span class="n">info</span> <span class="k">else</span> <span class="kc">False</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.set_odr"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_odr">[docs]</a>    <span class="k">def</span> <span class="nf">set_odr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">odr</span><span class="p">):</span>
@@ -494,7 +494,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -504,7 +504,7 @@
                     <span class="s1">&#39;</span><span class="si">{:04d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">odr</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.set_fls"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_fls">[docs]</a>    <span class="k">def</span> <span class="nf">set_fls</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fls</span><span class="p">):</span>
@@ -520,7 +520,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -530,7 +530,7 @@
                     <span class="s1">&#39;</span><span class="si">{:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fls</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.set_sze"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_sze">[docs]</a>    <span class="k">def</span> <span class="nf">set_sze</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sze</span><span class="p">):</span>
@@ -546,7 +546,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -556,7 +556,7 @@
                     <span class="s1">&#39;</span><span class="si">{:04d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sze</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.set_sub"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_sub">[docs]</a>    <span class="k">def</span> <span class="nf">set_sub</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sub</span><span class="p">):</span>
@@ -572,7 +572,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -582,7 +582,7 @@
                     <span class="s1">&#39;</span><span class="si">{:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sub</span><span class="o">.</span><span class="n">value</span><span class="p">))</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.set_acq"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_acq">[docs]</a>    <span class="k">def</span> <span class="nf">set_acq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">acq</span><span class="p">):</span>
@@ -599,7 +599,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -610,7 +610,7 @@
                     <span class="s1">&#39;</span><span class="si">{:05d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acq</span><span class="p">))</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div>
             <span class="k">raise</span> <span class="n">e</span>
 
 <div class="viewcode-block" id="IOLinkSensor.set_ovl"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_ovl">[docs]</a>    <span class="k">def</span> <span class="nf">set_ovl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ovl</span><span class="p">):</span>
@@ -628,7 +628,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            &#39;SerialException&#39; or &#39;SerialTimeoutException&#39; are raised if</span>
 <span class="sd">                something with the serial communication does not work.</span>
-<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`</span>
+<span class="sd">            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`</span>
 <span class="sd">                is raised if the command has not been executed successfully.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">try</span><span class="p">:</span>
@@ -638,7 +638,7 @@
                     <span class="s1">&#39;</span><span class="si">{:02d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ovl</span><span class="p">))</span>
 
         <span class="k">except</span> <span class="p">(</span><span class="n">SerialException</span><span class="p">,</span> <span class="n">SerialTimeoutException</span><span class="p">,</span>
-            <span class="n">InvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div></div>
+            <span class="n">WireInvalidOperationException</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span></div></div>
             <span class="k">raise</span> <span class="n">e</span>
 </pre></div>
 
