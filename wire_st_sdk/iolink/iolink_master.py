@@ -46,7 +46,7 @@ from datetime import datetime
 
 from wire_st_sdk.iolink.iolink_protocol import IOLinkProtocol
 from wire_st_sdk.iolink.iolink_sensor import IOLinkSensor
-from wire_st_sdk.utils.wire_st_exceptions import InvalidOperationException
+from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
 from wire_st_sdk.python_utils import lock
 from wire_st_sdk.python_utils import lock_for_object
 
@@ -154,7 +154,7 @@ class IOLinkMaster(object):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -242,7 +242,7 @@ class IOLinkMaster(object):
                 return True
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def connect(self):
@@ -255,7 +255,7 @@ class IOLinkMaster(object):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -362,7 +362,7 @@ class IOLinkMaster(object):
                 return self._answer
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def disconnect(self):
@@ -417,14 +417,14 @@ class IOLinkMaster(object):
             otherwise.
 
         Raises:
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         # Creating the device.
         try:
             with lock_for_object(self):
                 if self.get_answer() == None:
-                    raise InvalidOperationException('Before trying to get a \
+                    raise WireInvalidOperationException('Before trying to get a \
                         device, connect to the masterboard.')
 
                 if device_id in self._devices_id_position_map:
@@ -434,7 +434,7 @@ class IOLinkMaster(object):
 
                 return None
 
-        except InvalidOperationException as e:
+        except WireInvalidOperationException as e:
             raise e
 
     def get_device_by_position(self, device_position, device_name=None):
@@ -451,7 +451,7 @@ class IOLinkMaster(object):
             position, None otherwise.
 
         Raises:
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
             :exc:`ValueError` if the device position is not allowed.
         """
@@ -459,7 +459,7 @@ class IOLinkMaster(object):
         try:
             with lock_for_object(self):
                 if self.get_answer() == None:
-                    raise InvalidOperationException('Before trying to get a \
+                    raise WireInvalidOperationException('Before trying to get a \
                         device, connect to the masterboard.')
 
                 if device_position not in range(1, self._NUMBER_OF_DEVICES + 1):
@@ -473,7 +473,7 @@ class IOLinkMaster(object):
 
                 return None
 
-        except InvalidOperationException as e:
+        except WireInvalidOperationException as e:
             raise e
 
     def get_answer(self):
@@ -548,7 +548,8 @@ class IOLinkMasterListener(object):
         """To be called whenever a masterboard changes its status.
 
         Args:
-            masterboard (IOLinkMaster): Masterboard that has changed its status.
+            masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard
+                that has changed its status.
             new_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): New
                 status.
             old_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): Old
@@ -565,7 +566,8 @@ class IOLinkMasterListener(object):
         """To be called whenever a masterboard finds a new device connected.
 
         Args:
-            masterboard (IOLinkMaster): Masterboard that has found a new device.
+            masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard
+                that has found a new device.
             device_id (str): New device found.
             device_position (int): Position of the new device found.
 

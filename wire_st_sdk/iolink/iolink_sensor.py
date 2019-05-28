@@ -43,7 +43,7 @@ from serial import SerialTimeoutException
 
 from wire_st_sdk.iolink.iolink_protocol import IOLinkProtocol
 from wire_st_sdk.iolink.iolink_device import IOLinkDevice
-from wire_st_sdk.utils.wire_st_exceptions import InvalidOperationException
+from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
 from wire_st_sdk.python_utils import lock_for_object
 
 
@@ -85,7 +85,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -128,7 +128,7 @@ class IOLinkSensor(IOLinkDevice):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def _bytes_to_floats(self, data, precision=0):
@@ -157,7 +157,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -185,7 +185,7 @@ class IOLinkSensor(IOLinkDevice):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def get_tdm(self):
@@ -199,7 +199,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -228,7 +228,7 @@ class IOLinkSensor(IOLinkDevice):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def get_fft(self):
@@ -242,7 +242,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -275,7 +275,7 @@ class IOLinkSensor(IOLinkDevice):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def _set_parameter(self, parameter, value):
@@ -291,7 +291,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -325,7 +325,7 @@ class IOLinkSensor(IOLinkDevice):
                     in info else False
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def set_odr(self, odr):
@@ -341,7 +341,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -351,7 +351,7 @@ class IOLinkSensor(IOLinkDevice):
                     '{:04d}'.format(odr.value))
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def set_fls(self, fls):
@@ -367,7 +367,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -377,7 +377,7 @@ class IOLinkSensor(IOLinkDevice):
                     '{:02d}'.format(fls.value))
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def set_sze(self, sze):
@@ -393,7 +393,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -403,7 +403,7 @@ class IOLinkSensor(IOLinkDevice):
                     '{:04d}'.format(sze.value))
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def set_sub(self, sub):
@@ -419,7 +419,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -429,7 +429,7 @@ class IOLinkSensor(IOLinkDevice):
                     '{:02d}'.format(sub.value))
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def set_acq(self, acq):
@@ -446,7 +446,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -457,7 +457,7 @@ class IOLinkSensor(IOLinkDevice):
                     '{:05d}'.format(acq))
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def set_ovl(self, ovl):
@@ -475,7 +475,7 @@ class IOLinkSensor(IOLinkDevice):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -485,5 +485,5 @@ class IOLinkSensor(IOLinkDevice):
                     '{:02d}'.format(ovl))
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e

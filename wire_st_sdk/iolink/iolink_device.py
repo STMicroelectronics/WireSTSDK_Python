@@ -39,7 +39,7 @@ from serial import SerialException
 from serial import SerialTimeoutException
 
 from wire_st_sdk.iolink.iolink_protocol import IOLinkProtocol
-from wire_st_sdk.utils.wire_st_exceptions import InvalidOperationException
+from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
 from wire_st_sdk.python_utils import lock_for_object
 
 
@@ -110,7 +110,7 @@ class IOLinkDevice(object):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -138,7 +138,7 @@ class IOLinkDevice(object):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
 
     def get_firmware(self):
@@ -150,7 +150,7 @@ class IOLinkDevice(object):
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
                 something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.InvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         try:
@@ -177,5 +177,5 @@ class IOLinkDevice(object):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            InvalidOperationException) as e:
+            WireInvalidOperationException) as e:
             raise e
