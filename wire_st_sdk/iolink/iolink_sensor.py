@@ -175,7 +175,7 @@ class IOLinkSensor(IOLinkDevice):
                             IOLinkSensor._SIZE_OF_FLOAT_bytes:
                             break
 
-                    print('Missing data. Sending again....')
+                    #print('Missing data. Sending again....')
 
                 if not IOLinkProtocol.BYTES_TRANSMISSION:
                     info = list(map(lambda s: float(s), info))
@@ -216,7 +216,7 @@ class IOLinkSensor(IOLinkDevice):
                             IOLinkSensor._SIZE_OF_FLOAT_bytes:
                             break
 
-                    print('Missing data. Sending again....')
+                    #print('Missing data. Sending again....')
 
                 if not IOLinkProtocol.BYTES_TRANSMISSION:
                     info = [list(map(lambda s: float(s), info[0:3])), \
@@ -261,7 +261,7 @@ class IOLinkSensor(IOLinkDevice):
                         if len(info) == l * n:
                             break
 
-                    print('Missing data. Sending again...')
+                    #print('Missing data. Sending again...')
 
                 if not IOLinkProtocol.BYTES_TRANSMISSION:
                     for i in range(0, len(info)):
