@@ -56,13 +56,14 @@ from serial import SerialTimeoutException
 import wire_st_sdk.iolink.iolink_protocol as iolink_protocol
 from wire_st_sdk.iolink.iolink_master import IOLinkMaster
 from wire_st_sdk.iolink.iolink_master import IOLinkMasterListener
-from wire_st_sdk.utils.wire_st_exceptions import InvalidOperationException
+from wire_st_sdk.iolink.iolink_device import IOLinkDevice
+from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
 
 
 # PRECONDITIONS
 #
-# Please remember to add to the "PYTHONPATH" environment variable the location
-# of the "WireSTSDK_Python" SDK.
+# In case you want to modify the SDK, clone the repository and add the location
+# of the "WireSTSDK_Python" folder to the "PYTHONPATH" environment variable.
 #
 # On Linux:
 #   export PYTHONPATH=/home/<user>/WireSTSDK_Python
@@ -78,6 +79,7 @@ INTRO = """###################
 # IO-Link settings.
 SERIAL_PORT_NAME = '/dev/ttyUSB0'
 SERIAL_PORT_BAUDRATE_bs = 230400
+SERIAL_PORT_TIMEOUT_s = 5
 
 # Devices' identifier.
 IOT_DEVICE_1_ID = '393832383035511900430037'
@@ -135,26 +137,26 @@ def main(argv):
     print_intro()
 
     try:
-        # Creating Serial Port.
+        # Initializing Serial Port.
         serial_port = serial.Serial()
         serial_port.port = SERIAL_PORT_NAME
         serial_port.baudrate = SERIAL_PORT_BAUDRATE_bs
         serial_port.parity = serial.PARITY_NONE
         serial_port.stopbits = serial.STOPBITS_ONE
         serial_port.bytesize = serial.EIGHTBITS
-        serial_port.timeout = None
+        serial_port.timeout = SERIAL_PORT_TIMEOUT_s
+        serial_port.write_timeout = None
 
-        # Creating an IO-Link Masterboard and connecting it to the host.
-        print('Creating IO-Link Masterboard with a baud rate of %d [b/s]...' % \
-            (serial_port.baudrate))
+        # Initializing an IO-Link Masterboard and connecting it to the host.
+        print('\nInitializing Masterboard on port %s with a baud rate of %d ' \
+            '[b/s]...' % (serial_port.port, serial_port.baudrate))
         master = IOLinkMaster(serial_port)
         master_listener = MyIOLinkMasterListener()
         master.add_listener(master_listener)
         status = master.connect()
-        print(status)
 
-        # Getting IO-Link Devices.
-        print('Creating IO-Link Devices...')
+        # Initializing IO-Link Devices.
+        print('Initializing IO-Link Devices...')
         devices = []
         devices.append(master.get_device(IOT_DEVICE_1_ID))
         devices.append(master.get_device(IOT_DEVICE_2_ID))
@@ -166,7 +168,7 @@ def main(argv):
                 sys.exit(0)
 
         # IO-Link setup complete.
-        print('IO-Link setup complete.\n')
+        print('\nIO-Link setup complete.\n')
 
         # Getting information about devices.
         for device in devices:
@@ -223,8 +225,9 @@ def main(argv):
         sys.exit(0)
 
 
-    except (SerialException, SerialTimeoutException, \
-        InvalidOperationException) as e:
+    except (WireInvalidOperationException, \
+        SerialException, SerialTimeoutException, \
+        ValueError) as e:
         print(e)
         master.disconnect()
         print('Exiting...\n')
