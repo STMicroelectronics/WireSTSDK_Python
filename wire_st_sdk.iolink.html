@@ -1,0 +1,1269 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>wire_st_sdk.iolink package &mdash; WireSTSDK 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="WireSTSDK 1.0.0 documentation" href="index.html"/>
+        <link rel="up" title="wire_st_sdk package" href="wire_st_sdk.html"/>
+        <link rel="next" title="wire_st_sdk.utils package" href="wire_st_sdk.utils.html"/>
+        <link rel="prev" title="wire_st_sdk package" href="wire_st_sdk.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> WireSTSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="wire_st_sdk.html">wire_st_sdk package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="wire_st_sdk.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">wire_st_sdk.iolink package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-wire_st_sdk.iolink.iolink_device">wire_st_sdk.iolink.iolink_device module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-wire_st_sdk.iolink.iolink_master">wire_st_sdk.iolink.iolink_master module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-wire_st_sdk.iolink.iolink_protocol">wire_st_sdk.iolink.iolink_protocol module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-wire_st_sdk.iolink.iolink_sensor">wire_st_sdk.iolink.iolink_sensor module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-wire_st_sdk.iolink">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wire_st_sdk.utils.html">wire_st_sdk.utils package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="wire_st_sdk.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wire_st_sdk.html#module-wire_st_sdk.python_utils">wire_st_sdk.python_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="wire_st_sdk.html#module-wire_st_sdk">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">WireSTSDK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="wire_st_sdk.html">wire_st_sdk package</a> &raquo;</li>
+        
+      <li>wire_st_sdk.iolink package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/wire_st_sdk.iolink.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="wire-st-sdk-iolink-package">
+<h1>wire_st_sdk.iolink package<a class="headerlink" href="#wire-st-sdk-iolink-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-wire_st_sdk.iolink.iolink_device">
+<span id="wire-st-sdk-iolink-iolink-device-module"></span><h2>wire_st_sdk.iolink.iolink_device module<a class="headerlink" href="#module-wire_st_sdk.iolink.iolink_device" title="Permalink to this headline">¶</a></h2>
+<p>iolink_device</p>
+<p>The iolink_device module represent a device capable of connecting to an IO-Link
+masterboard and sending/receiving data to it.</p>
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_device.</code><code class="descname">IOLinkDevice</code><span class="sig-paren">(</span><em>master</em>, <em>position</em>, <em>id</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>IO-Link Device class.</p>
+<p>This class manages the commands of a standard IO-Link device.</p>
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>master</em>, <em>position</em>, <em>id</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>master (<a class="reference internal" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster" title="wire_st_sdk.iolink.iolink_master.IOLinkMaster"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_master.IOLinkMaster</span></code></a>):</dt>
+<dd>Masterboard object.</dd>
+<dt>position (int): Device’s position according to the enumeration on</dt>
+<dd>the masterboard.</dd>
+</dl>
+<p class="last">id (str): Device’s identifier.
+name (str): Device’s name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_features">
+<code class="descname">get_features</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice.get_features"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the list of features.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>list: A list with the available features.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_firmware">
+<code class="descname">get_firmware</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice.get_firmware"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_firmware" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the version of the firmware.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>str: The version of the firmware as a string.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_id">
+<code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice.get_id"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the device’s identifier.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>str: The device’s identifier.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice.get_name"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the device’s name.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>str: The device’s name.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_position">
+<code class="descname">get_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_device.html#IOLinkDevice.get_position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice.get_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the device’s position according to the enumeration on the
+masterboard.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>int: The device’s position according to the enumeration on the
+masterboard.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wire_st_sdk.iolink.iolink_master">
+<span id="wire-st-sdk-iolink-iolink-master-module"></span><h2>wire_st_sdk.iolink.iolink_master module<a class="headerlink" href="#module-wire_st_sdk.iolink.iolink_master" title="Permalink to this headline">¶</a></h2>
+<p>iolink_master</p>
+<p>The iolink_master module is responsible for managing IO-Link capable devices
+connected to an iolink masterboard and allocating the needed resources.</p>
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_master.</code><code class="descname">IOLinkMaster</code><span class="sig-paren">(</span><em>serial_port</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>IO-Link Master class.</p>
+<p>This class manages the communication between the host and the masterboard.</p>
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>serial_port</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>serial_port (Serial): Serial Port object. Refer to</dt>
+<dd><a class="reference external" href="https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial">Serial</a>
+for more information.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.add_listener">
+<code class="descname">add_listener</code><span class="sig-paren">(</span><em>listener</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.add_listener"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.add_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a listener.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>listener (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.MasterListener</span></code>): Listener to</dt>
+<dd>be added.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the communication between the masterboard and the host to which
+it is connected.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>str: The status of the connection.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.disconnect">
+<code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.disconnect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>End the communication between the masterboard and the host to which
+it is connected.</p>
+<dl class="docutils">
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_answer">
+<code class="descname">get_answer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.get_answer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_answer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the last answer received on the serial port when executing a
+command.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_device">
+<code class="descname">get_device</code><span class="sig-paren">(</span><em>device_id</em>, <em>device_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.get_device"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_device" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure and get a connected device.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>device_id (str): Device’s identifier.
+device_name (str): Device’s name.</dd>
+<dt>Returns:</dt>
+<dd><a class="reference internal" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice" title="wire_st_sdk.iolink.iolink_device.IOLinkDevice"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_device.IOLinkDevice</span></code></a>: IOLink
+connected device if the device identifier is correct, None
+otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_device_by_position">
+<code class="descname">get_device_by_position</code><span class="sig-paren">(</span><em>device_position</em>, <em>device_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.get_device_by_position"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_device_by_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configure and get a connected device.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>device_position (int): Device’s position according to the</dt>
+<dd>enumeration on the masterboard.</dd>
+</dl>
+<p class="last">device_name (str): Device’s name.</p>
+</dd>
+<dt>Returns:</dt>
+<dd><a class="reference internal" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice" title="wire_st_sdk.iolink.iolink_device.IOLinkDevice"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_device.IOLinkDevice</span></code></a>: IOLink
+connected device if there is a device connected at the given device
+position, None otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first docutils">
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+<p class="last"><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#ValueError" title="(in Python v3.7)"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code></a> if the device position is not allowed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_port">
+<code class="descname">get_port</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.get_port"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.get_port" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the serial port of the masterboard.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd><dl class="first last docutils">
+<dt>Serial: Serial Port object. Refer to</dt>
+<dd><a class="reference external" href="https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial">Serial</a>
+for more information.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.is_connected">
+<code class="descname">is_connected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.is_connected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.is_connected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether the master is connected.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>bool: True if the master is connected, False otherwise.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMaster.remove_listener">
+<code class="descname">remove_listener</code><span class="sig-paren">(</span><em>listener</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMaster.remove_listener"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMaster.remove_listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a listener.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>listener (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.MasterListener</span></code>): Listener to</dt>
+<dd>be removed.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterListener">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_master.</code><code class="descname">IOLinkMasterListener</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMasterListener"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterListener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Interface used by the <code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMaster</span></code> class to
+notify changes of a masterboard’s status.</p>
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterListener.on_device_found">
+<code class="descname">on_device_found</code><span class="sig-paren">(</span><em>masterboard</em>, <em>device_id</em>, <em>device_position</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMasterListener.on_device_found"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterListener.on_device_found" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be called whenever a masterboard finds a new device connected.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first docutils">
+<dt>masterboard (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMaster</span></code>): Masterboard</dt>
+<dd>that has found a new device.</dd>
+</dl>
+<p class="last">device_id (str): New device found.
+device_position (int): Position of the new device found.</p>
+</dd>
+<dt>Raises:</dt>
+<dd>‘NotImplementedError’ is raised if the method is not implemented.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterListener.on_status_change">
+<code class="descname">on_status_change</code><span class="sig-paren">(</span><em>masterboard</em>, <em>new_status</em>, <em>old_status</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMasterListener.on_status_change"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterListener.on_status_change" title="Permalink to this definition">¶</a></dt>
+<dd><p>To be called whenever a masterboard changes its status.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>masterboard (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMaster</span></code>): Masterboard</dt>
+<dd>that has changed its status.</dd>
+<dt>new_status (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMasterStatus</span></code>): New</dt>
+<dd>status.</dd>
+<dt>old_status (<code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.IOLinkMasterStatus</span></code>): Old</dt>
+<dd>status.</dd>
+</dl>
+</dd>
+<dt>Raises:</dt>
+<dd>‘NotImplementedError’ is raised if the method is not implemented.</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_master.</code><code class="descname">IOLinkMasterStatus</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_master.html#IOLinkMasterStatus"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Status of the masterboard.</p>
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.CONNECTED">
+<code class="descname">CONNECTED</code><em class="property"> = 'CONNECTED'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connected to the host.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.CONNECTING">
+<code class="descname">CONNECTING</code><em class="property"> = 'CONNECTING'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.CONNECTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opening a connection with the host.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.DISCONNECTING">
+<code class="descname">DISCONNECTING</code><em class="property"> = 'DISCONNECTING'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.DISCONNECTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closing the connection to the host.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.IDLE">
+<code class="descname">IDLE</code><em class="property"> = 'IDLE'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.IDLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waiting for a connection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.INIT">
+<code class="descname">INIT</code><em class="property"> = 'INIT'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus.INIT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dummy initial status.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wire_st_sdk.iolink.iolink_protocol">
+<span id="wire-st-sdk-iolink-iolink-protocol-module"></span><h2>wire_st_sdk.iolink.iolink_protocol module<a class="headerlink" href="#module-wire_st_sdk.iolink.iolink_protocol" title="Permalink to this headline">¶</a></h2>
+<p>iolink_protocol</p>
+<p>The iolink_protocol module contains definitions related to the IO-Link protocol.</p>
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_protocol.FLS">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_protocol.</code><code class="descname">FLS</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_protocol.html#FLS"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.FLS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Allowed parameters’ values for FLS.
+Accelerometer’s full scale.</p>
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.FLS.FLS_16">
+<code class="descname">FLS_16</code><em class="property"> = 16</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.FLS.FLS_16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.FLS.FLS_2">
+<code class="descname">FLS_2</code><em class="property"> = 2</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.FLS.FLS_2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.FLS.FLS_4">
+<code class="descname">FLS_4</code><em class="property"> = 4</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.FLS.FLS_4" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.FLS.FLS_8">
+<code class="descname">FLS_8</code><em class="property"> = 8</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.FLS.FLS_8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_protocol.</code><code class="descname">IOLinkProtocol</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_protocol.html#IOLinkProtocol"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>This class lists the protocol’s commands used for IO-Link communication.</p>
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.ACK">
+<code class="descname">ACK</code><em class="property"> = '1'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.ACK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Acknowledgement.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.BYTES_TRANSMISSION">
+<code class="descname">BYTES_TRANSMISSION</code><em class="property"> = True</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.BYTES_TRANSMISSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>If True, transmission of data is by bytes; by characters otherwise.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ACQ">
+<code class="descname">COMMAND_ACQ</code><em class="property"> = 'ACQ\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ACQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s total acquisition time (all types of analysis).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_END">
+<code class="descname">COMMAND_END</code><em class="property"> = 'COMMAND END\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_END" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close actual programming mode and change node.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_FLS">
+<code class="descname">COMMAND_FLS</code><em class="property"> = 'FLS\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_FLS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s full scale.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_GET">
+<code class="descname">COMMAND_GET</code><em class="property"> = 'STS\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_GET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sensor’s status, vibration peak, RMS, or vibration overtoken.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_GET_1">
+<code class="descname">COMMAND_GET_1</code><em class="property"> = 'MCU\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_GET_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Microcontroller’s identifier.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ICD">
+<code class="descname">COMMAND_ICD</code><em class="property"> = 'DEVICE\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ICD" title="Permalink to this definition">¶</a></dt>
+<dd><p>IO-Link communication mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ICM">
+<code class="descname">COMMAND_ICM</code><em class="property"> = 'MASTER\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ICM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Master settings mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ID">
+<code class="descname">COMMAND_ID</code><em class="property"> = 'IDS\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sensors list.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1">
+<code class="descname">COMMAND_MEAS1</code><em class="property"> = 'MSR\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request for measurement.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_1">
+<code class="descname">COMMAND_MEAS1_1</code><em class="property"> = 'RAW\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>RAW data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_2">
+<code class="descname">COMMAND_MEAS1_2</code><em class="property"> = 'TDM\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time domain data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_3">
+<code class="descname">COMMAND_MEAS1_3</code><em class="property"> = 'ENV\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Environmental data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_4">
+<code class="descname">COMMAND_MEAS1_4</code><em class="property"> = 'FFT\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_MEAS1_4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fast Fourier Transform data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_NEW">
+<code class="descname">COMMAND_NEW</code><em class="property"> = 'COMMAND NEW\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_NEW" title="Permalink to this definition">¶</a></dt>
+<dd><p>Continue programming on the same node.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ODR">
+<code class="descname">COMMAND_ODR</code><em class="property"> = 'ODR\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_ODR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s output data rate.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_OVL">
+<code class="descname">COMMAND_OVL</code><em class="property"> = 'OVL\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_OVL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s overlapping percentage between two consecutive FFT
+analysis.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_RDC">
+<code class="descname">COMMAND_RDC</code><em class="property"> = 'RD_C\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_RDC" title="Permalink to this definition">¶</a></dt>
+<dd><p>L6360 read curent mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_RDS">
+<code class="descname">COMMAND_RDS</code><em class="property"> = 'RD_S\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_RDS" title="Permalink to this definition">¶</a></dt>
+<dd><p>L6360 read sequential mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET">
+<code class="descname">COMMAND_SET</code><em class="property"> = 'SET\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set sensor parameter.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET1">
+<code class="descname">COMMAND_SET1</code><em class="property"> = 'SENSOR CNF\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sensor configuration parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET1_1">
+<code class="descname">COMMAND_SET1_1</code><em class="property"> = 'SENSOR ACC CNF\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET1_1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sensor configuration accelerometer parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET1_2">
+<code class="descname">COMMAND_SET1_2</code><em class="property"> = 'SENSOR ACC CPT\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SET1_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sensor configuration computation parameters.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SP">
+<code class="descname">COMMAND_SP</code><em class="property"> = 'PRM\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sensor’s parameter.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SP1">
+<code class="descname">COMMAND_SP1</code><em class="property"> = 'SENSOR ACC PRM\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SP1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get accelerometer’s data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SP2">
+<code class="descname">COMMAND_SP2</code><em class="property"> = 'SENSOR ENV PRM\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SP2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get evironmental data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_START">
+<code class="descname">COMMAND_START</code><em class="property"> = 'START\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_START" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open RS485 communication.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SUB">
+<code class="descname">COMMAND_SUB</code><em class="property"> = 'SUB\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SUB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s number of subranges.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SZE">
+<code class="descname">COMMAND_SZE</code><em class="property"> = 'SZE\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_SZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s input array size for FFT.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_WRC">
+<code class="descname">COMMAND_WRC</code><em class="property"> = 'WR_C\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_WRC" title="Permalink to this definition">¶</a></dt>
+<dd><p>L6360 write curent mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_WRS">
+<code class="descname">COMMAND_WRS</code><em class="property"> = 'WR_S\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.COMMAND_WRS" title="Permalink to this definition">¶</a></dt>
+<dd><p>L6360 write sequential mode.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_CONNECTED">
+<code class="descname">MESSAGE_CONNECTED</code><em class="property"> = 'CONNECTED\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_PARAMETER_ERROR">
+<code class="descname">MESSAGE_PARAMETER_ERROR</code><em class="property"> = 'PARAMETER ERROR\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_PARAMETER_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_PARAMETER_UPDATED">
+<code class="descname">MESSAGE_PARAMETER_UPDATED</code><em class="property"> = 'PARAMETER UPDATED\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_PARAMETER_UPDATED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_PROGRAMMING_DONE">
+<code class="descname">MESSAGE_PROGRAMMING_DONE</code><em class="property"> = 'PROGRAMMING DONE\r\n\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_PROGRAMMING_DONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_SENSOR_FAILED">
+<code class="descname">MESSAGE_SENSOR_FAILED</code><em class="property"> = 'SENSOR FAILED\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_SENSOR_FAILED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_TRANSMISSION_COMPLETED">
+<code class="descname">MESSAGE_TRANSMISSION_COMPLETED</code><em class="property"> = 'TRANSMISSION COMPLETED\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.MESSAGE_TRANSMISSION_COMPLETED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.NACK">
+<code class="descname">NACK</code><em class="property"> = '0'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.NACK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Non-Acknowledgement.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_IC">
+<code class="descname">REQUEST_IC</code><em class="property"> = 'INSERT ADDRESS IC :\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_IC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_MEASURE_TYPE">
+<code class="descname">REQUEST_MEASURE_TYPE</code><em class="property"> = 'INSERT MEASURE TYPE :'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_MEASURE_TYPE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_MOD">
+<code class="descname">REQUEST_MOD</code><em class="property"> = 'SELECT MASTER OR DEVICE\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_MOD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_OPM">
+<code class="descname">REQUEST_OPM</code><em class="property"> = 'INSERT OPERATING MODE :\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_OPM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_PARAMETER_NAME">
+<code class="descname">REQUEST_PARAMETER_NAME</code><em class="property"> = 'INSERT PARAMETER NAME :'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_PARAMETER_NAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_PARAMETER_VALUE">
+<code class="descname">REQUEST_PARAMETER_VALUE</code><em class="property"> = 'INSERT PARAMETER VALUE :'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_PARAMETER_VALUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_RADRS">
+<code class="descname">REQUEST_RADRS</code><em class="property"> = 'INSERT REGISTER ADDRESS :\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_RADRS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_RVAL">
+<code class="descname">REQUEST_RVAL</code><em class="property"> = 'INSERT REGISTER VALUE :\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_RVAL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_SENSOR_COMMAND">
+<code class="descname">REQUEST_SENSOR_COMMAND</code><em class="property"> = 'INSERT SENSOR COMMAND :'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_SENSOR_COMMAND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_SLAVE">
+<code class="descname">REQUEST_SLAVE</code><em class="property"> = 'INSERT SLAVE NODE :'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.REQUEST_SLAVE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.TERMINATOR_SEQ">
+<code class="descname">TERMINATOR_SEQ</code><em class="property"> = '\r\n'</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol.TERMINATOR_SEQ" title="Permalink to this definition">¶</a></dt>
+<dd><p>Terminator sequence.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_protocol.</code><code class="descname">ODR</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_protocol.html#ODR"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Allowed parameters’ values for ODR.
+Accelerometer’s output data rate.</p>
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_104">
+<code class="descname">ODR_104</code><em class="property"> = 104</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_104" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_13">
+<code class="descname">ODR_13</code><em class="property"> = 13</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_13" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_1660">
+<code class="descname">ODR_1660</code><em class="property"> = 1660</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_1660" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_208">
+<code class="descname">ODR_208</code><em class="property"> = 208</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_208" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_26">
+<code class="descname">ODR_26</code><em class="property"> = 26</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_26" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_3330">
+<code class="descname">ODR_3330</code><em class="property"> = 3330</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_3330" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_416">
+<code class="descname">ODR_416</code><em class="property"> = 416</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_416" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_52">
+<code class="descname">ODR_52</code><em class="property"> = 52</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_52" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_6660">
+<code class="descname">ODR_6660</code><em class="property"> = 6660</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_6660" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.ODR.ODR_833">
+<code class="descname">ODR_833</code><em class="property"> = 833</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.ODR.ODR_833" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SUB">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_protocol.</code><code class="descname">SUB</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_protocol.html#SUB"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SUB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Allowed parameters’ values for SUB.
+Accelerometer’s number of subranges.</p>
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SUB.SUB_16">
+<code class="descname">SUB_16</code><em class="property"> = 16</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SUB.SUB_16" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SUB.SUB_32">
+<code class="descname">SUB_32</code><em class="property"> = 32</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SUB.SUB_32" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SUB.SUB_64">
+<code class="descname">SUB_64</code><em class="property"> = 64</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SUB.SUB_64" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SUB.SUB_8">
+<code class="descname">SUB_8</code><em class="property"> = 8</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SUB.SUB_8" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SZE">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_protocol.</code><code class="descname">SZE</code><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_protocol.html#SZE"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.7)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<p>Allowed parameters’ values for SZE.
+Accelerometer’s input array size for FFT.</p>
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SZE.SZE_1024">
+<code class="descname">SZE_1024</code><em class="property"> = 1024</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SZE.SZE_1024" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SZE.SZE_2048">
+<code class="descname">SZE_2048</code><em class="property"> = 2048</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SZE.SZE_2048" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SZE.SZE_256">
+<code class="descname">SZE_256</code><em class="property"> = 256</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SZE.SZE_256" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="wire_st_sdk.iolink.iolink_protocol.SZE.SZE_512">
+<code class="descname">SZE_512</code><em class="property"> = 512</em><a class="headerlink" href="#wire_st_sdk.iolink.iolink_protocol.SZE.SZE_512" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wire_st_sdk.iolink.iolink_sensor">
+<span id="wire-st-sdk-iolink-iolink-sensor-module"></span><h2>wire_st_sdk.iolink.iolink_sensor module<a class="headerlink" href="#module-wire_st_sdk.iolink.iolink_sensor" title="Permalink to this headline">¶</a></h2>
+<p>iolink_sensor</p>
+<p>The iolink_sensor module represents a device capable of connecting to an IOLink
+masterboard and sending/receiving data to it.</p>
+<dl class="class">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor">
+<em class="property">class </em><code class="descclassname">wire_st_sdk.iolink.iolink_sensor.</code><code class="descname">IOLinkSensor</code><span class="sig-paren">(</span><em>master</em>, <em>position</em>, <em>id</em>, <em>name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#wire_st_sdk.iolink.iolink_device.IOLinkDevice" title="wire_st_sdk.iolink.iolink_device.IOLinkDevice"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_device.IOLinkDevice</span></code></a></p>
+<p>IO-Link Sensor class.</p>
+<p>This class manages the commands of a standard IO-Link sensor.</p>
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_env">
+<code class="descname">get_env</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.get_env"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_env" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get environmental data.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>list: A list with Pressure [mbar], Humidity [%], and Temperature [C]
+values.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_fft">
+<code class="descname">get_fft</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.get_fft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_fft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get Fast Fourier Transform of vibration data.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>list: A n-elements list, with each element being a list of four
+values: the first is a frequency [Hz] and the other three are the
+corresponding vibration values on the three axis [m/s2].</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_tdm">
+<code class="descname">get_tdm</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.get_tdm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.get_tdm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get time domain data.</p>
+<dl class="docutils">
+<dt>Returns:</dt>
+<dd>list: A two-elements list, with a list of RMS Speed values on X,Y,Z
+axes [mm/s] as the first element, and a list of Peak Acceleration
+values on X,Y,Z axes [m/s2] as the second element.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_acq">
+<code class="descname">set_acq</code><span class="sig-paren">(</span><em>acq</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.set_acq"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_acq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s total acquisition time, which is valid for all
+types of analysis.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>acq (int): accelerometer’s total acquisition time (must be in the</dt>
+<dd>range [ACQ_MIN..ACQ_MAX]).</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>bool: True if the parameter has been set correctly, False otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_fls">
+<code class="descname">set_fls</code><span class="sig-paren">(</span><em>fls</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.set_fls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_fls" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s full scale.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>fls (<a class="reference internal" href="#wire_st_sdk.iolink.iolink_protocol.FLS" title="wire_st_sdk.iolink.iolink_protocol.FLS"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_protocol.FLS</span></code></a>):</dt>
+<dd>accelerometer’s full scale.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>bool: True if the parameter has been set correctly, False otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_odr">
+<code class="descname">set_odr</code><span class="sig-paren">(</span><em>odr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.set_odr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_odr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s output data rate.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>odr (<a class="reference internal" href="#wire_st_sdk.iolink.iolink_protocol.ODR" title="wire_st_sdk.iolink.iolink_protocol.ODR"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_protocol.ODR</span></code></a>):</dt>
+<dd>accelerometer’s output data rate.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>bool: True if the parameter has been set correctly, False otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_ovl">
+<code class="descname">set_ovl</code><span class="sig-paren">(</span><em>ovl</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.set_ovl"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_ovl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s overlapping percentage between two consecutive
+FFT analysis.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>ovl (int): accelerometer’s overlapping percentage between two</dt>
+<dd>consecutive FFT analysis (must be in the range
+[OVL_MIN..OVL_MAX]).</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>bool: True if the parameter has been set correctly, False otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_sub">
+<code class="descname">set_sub</code><span class="sig-paren">(</span><em>sub</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.set_sub"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_sub" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s number of subranges.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>sub (<a class="reference internal" href="#wire_st_sdk.iolink.iolink_protocol.SUB" title="wire_st_sdk.iolink.iolink_protocol.SUB"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_protocol.SUB</span></code></a>): number of</dt>
+<dd>subranges.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>bool: True if the parameter has been set correctly, False otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_sze">
+<code class="descname">set_sze</code><span class="sig-paren">(</span><em>sze</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/wire_st_sdk/iolink/iolink_sensor.html#IOLinkSensor.set_sze"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#wire_st_sdk.iolink.iolink_sensor.IOLinkSensor.set_sze" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set accelerometer’s input array size for FFT.</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd><dl class="first last docutils">
+<dt>sze (<a class="reference internal" href="#wire_st_sdk.iolink.iolink_protocol.SZE" title="wire_st_sdk.iolink.iolink_protocol.SZE"><code class="xref py py-class docutils literal notranslate"><span class="pre">wire_st_sdk.iolink.iolink_protocol.SZE</span></code></a>):</dt>
+<dd>accelerometer’s input array size for FFT.</dd>
+</dl>
+</dd>
+<dt>Returns:</dt>
+<dd>bool: True if the parameter has been set correctly, False otherwise.</dd>
+<dt>Raises:</dt>
+<dd><dl class="first last docutils">
+<dt>‘SerialException’ or ‘SerialTimeoutException’ are raised if</dt>
+<dd>something with the serial communication does not work.</dd>
+<dt><a class="reference internal" href="wire_st_sdk.utils.html#wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException" title="wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException"><code class="xref py py-exc docutils literal notranslate"><span class="pre">wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException</span></code></a></dt>
+<dd>is raised if the command has not been executed successfully.</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-wire_st_sdk.iolink">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-wire_st_sdk.iolink" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wire_st_sdk.utils.html" class="btn btn-neutral float-right" title="wire_st_sdk.utils package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="wire_st_sdk.html" class="btn btn-neutral" title="wire_st_sdk package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Davide Aliprandi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

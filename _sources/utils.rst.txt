@@ -1,0 +1,33 @@
+utils package
+=============
+
+Submodules
+----------
+
+utils.python\_utils module
+--------------------------
+
+.. automodule:: utils.python_utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :special-members: __init__
+
+utils.wire\_st\_exceptions module
+---------------------------------
+
+.. automodule:: utils.wire_st_exceptions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :special-members: __init__
+
+
+Module contents
+---------------
+
+.. automodule:: utils
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    :special-members: __init__

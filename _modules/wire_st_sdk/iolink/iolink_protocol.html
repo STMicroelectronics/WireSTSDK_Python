@@ -1,0 +1,423 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>wire_st_sdk.iolink.iolink_protocol &mdash; WireSTSDK 1.0.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="WireSTSDK 1.0.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> WireSTSDK
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../wire_st_sdk.html">wire_st_sdk package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">WireSTSDK</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>wire_st_sdk.iolink.iolink_protocol</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for wire_st_sdk.iolink.iolink_protocol</h1><div class="highlight"><pre>
+<span></span><span class="c1">################################################################################</span>
+<span class="c1"># COPYRIGHT(c) 2018 STMicroelectronics                                         #</span>
+<span class="c1">#                                                                              #</span>
+<span class="c1"># Redistribution and use in source and binary forms, with or without           #</span>
+<span class="c1"># modification, are permitted provided that the following conditions are met:  #</span>
+<span class="c1">#   1. Redistributions of source code must retain the above copyright notice,  #</span>
+<span class="c1">#      this list of conditions and the following disclaimer.                   #</span>
+<span class="c1">#   2. Redistributions in binary form must reproduce the above copyright       #</span>
+<span class="c1">#      notice, this list of conditions and the following disclaimer in the     #</span>
+<span class="c1">#      documentation and/or other materials provided with the distribution.    #</span>
+<span class="c1">#   3. Neither the name of STMicroelectronics nor the names of its             #</span>
+<span class="c1">#      contributors may be used to endorse or promote products derived from    #</span>
+<span class="c1">#      this software without specific prior written permission.                #</span>
+<span class="c1">#                                                                              #</span>
+<span class="c1"># THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot;  #</span>
+<span class="c1"># AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE    #</span>
+<span class="c1"># IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE   #</span>
+<span class="c1"># ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE    #</span>
+<span class="c1"># LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR          #</span>
+<span class="c1"># CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF         #</span>
+<span class="c1"># SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS     #</span>
+<span class="c1"># INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN      #</span>
+<span class="c1"># CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)      #</span>
+<span class="c1"># ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE   #</span>
+<span class="c1"># POSSIBILITY OF SUCH DAMAGE.                                                  #</span>
+<span class="c1">################################################################################</span>
+
+
+<span class="sd">&quot;&quot;&quot;iolink_protocol</span>
+
+<span class="sd">The iolink_protocol module contains definitions related to the IO-Link protocol.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="c1"># IMPORT</span>
+
+<span class="kn">from</span> <span class="nn">enum</span> <span class="k">import</span> <span class="n">Enum</span>
+
+
+<span class="c1"># COMMAND STRINGS</span>
+
+<div class="viewcode-block" id="IOLinkProtocol"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_protocol.IOLinkProtocol">[docs]</a><span class="k">class</span> <span class="nc">IOLinkProtocol</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This class lists the protocol&#39;s commands used for IO-Link communication.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Data transmission.</span>
+
+    <span class="n">BYTES_TRANSMISSION</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="sd">&quot;&quot;&quot;If True, transmission of data is by bytes; by characters otherwise.&quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Common sequences.</span>
+
+    <span class="n">TERMINATOR_SEQ</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\r\n</span><span class="s1">&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Terminator sequence.&quot;&quot;&quot;</span>
+    <span class="n">ACK</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Acknowledgement.&quot;&quot;&quot;</span>
+    <span class="n">NACK</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+    <span class="sd">&quot;&quot;&quot;Non-Acknowledgement.&quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Commands to the masterboard.</span>
+
+    <span class="n">COMMAND_START</span> <span class="o">=</span> <span class="s1">&#39;START&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Open RS485 communication.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_WRC</span> <span class="o">=</span> <span class="s1">&#39;WR_C&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;L6360 write curent mode.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_RDC</span> <span class="o">=</span> <span class="s1">&#39;RD_C&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;L6360 read curent mode.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_WRS</span> <span class="o">=</span> <span class="s1">&#39;WR_S&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;L6360 write sequential mode.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_RDS</span> <span class="o">=</span> <span class="s1">&#39;RD_S&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;L6360 read sequential mode.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_ICM</span> <span class="o">=</span> <span class="s1">&#39;MASTER&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Master settings mode.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_ICD</span> <span class="o">=</span> <span class="s1">&#39;DEVICE&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;IO-Link communication mode.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_NEW</span> <span class="o">=</span> <span class="s1">&#39;COMMAND NEW&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Continue programming on the same node.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_END</span> <span class="o">=</span> <span class="s1">&#39;COMMAND END&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Close actual programming mode and change node.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_ID</span> <span class="o">=</span> <span class="s1">&#39;IDS&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Get sensors list.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SP</span> <span class="o">=</span> <span class="s1">&#39;PRM&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Get sensor&#39;s parameter.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SP1</span> <span class="o">=</span> <span class="s1">&#39;SENSOR ACC PRM&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Get accelerometer&#39;s data.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SP2</span> <span class="o">=</span> <span class="s1">&#39;SENSOR ENV PRM&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Get evironmental data.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_MEAS1</span> <span class="o">=</span> <span class="s1">&#39;MSR&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Request for measurement.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_MEAS1_1</span> <span class="o">=</span> <span class="s1">&#39;RAW&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;RAW data.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_MEAS1_2</span> <span class="o">=</span> <span class="s1">&#39;TDM&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Time domain data.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_MEAS1_3</span> <span class="o">=</span> <span class="s1">&#39;ENV&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Environmental data.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_MEAS1_4</span> <span class="o">=</span> <span class="s1">&#39;FFT&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Fast Fourier Transform data.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_GET</span> <span class="o">=</span> <span class="s1">&#39;STS&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Get sensor&#39;s status, vibration peak, RMS, or vibration overtoken.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_GET_1</span> <span class="o">=</span> <span class="s1">&#39;MCU&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Microcontroller&#39;s identifier.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SET1</span> <span class="o">=</span> <span class="s1">&#39;SENSOR CNF&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Sensor configuration parameters.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SET1_1</span> <span class="o">=</span> <span class="s1">&#39;SENSOR ACC CNF&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Sensor configuration accelerometer parameters.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SET1_2</span> <span class="o">=</span> <span class="s1">&#39;SENSOR ACC CPT&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Sensor configuration computation parameters.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SET</span> <span class="o">=</span> <span class="s1">&#39;SET&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set sensor parameter.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_ODR</span> <span class="o">=</span> <span class="s1">&#39;ODR&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set accelerometer&#39;s output data rate.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_FLS</span> <span class="o">=</span> <span class="s1">&#39;FLS&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set accelerometer&#39;s full scale.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SZE</span> <span class="o">=</span> <span class="s1">&#39;SZE&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set accelerometer&#39;s input array size for FFT.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_SUB</span> <span class="o">=</span> <span class="s1">&#39;SUB&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set accelerometer&#39;s number of subranges.&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_ACQ</span> <span class="o">=</span> <span class="s1">&#39;ACQ&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set accelerometer&#39;s total acquisition time (all types of analysis).&quot;&quot;&quot;</span>
+    <span class="n">COMMAND_OVL</span> <span class="o">=</span> <span class="s1">&#39;OVL&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="sd">&quot;&quot;&quot;Set accelerometer&#39;s overlapping percentage between two consecutive FFT</span>
+<span class="sd">    analysis.&quot;&quot;&quot;</span>
+
+
+    <span class="c1"># Requests from the masterboard.</span>
+
+    <span class="n">REQUEST_MOD</span> <span class="o">=</span> <span class="s1">&#39;SELECT MASTER OR DEVICE&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">REQUEST_IC</span> <span class="o">=</span> <span class="s1">&#39;INSERT ADDRESS IC :&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">REQUEST_OPM</span> <span class="o">=</span> <span class="s1">&#39;INSERT OPERATING MODE :&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">REQUEST_RADRS</span> <span class="o">=</span> <span class="s1">&#39;INSERT REGISTER ADDRESS :&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">REQUEST_RVAL</span> <span class="o">=</span> <span class="s1">&#39;INSERT REGISTER VALUE :&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">REQUEST_PARAMETER_NAME</span> <span class="o">=</span> <span class="s1">&#39;INSERT PARAMETER NAME :&#39;</span>
+    <span class="n">REQUEST_PARAMETER_VALUE</span> <span class="o">=</span> <span class="s1">&#39;INSERT PARAMETER VALUE :&#39;</span>
+    <span class="n">REQUEST_SLAVE</span> <span class="o">=</span> <span class="s1">&#39;INSERT SLAVE NODE :&#39;</span>
+    <span class="n">REQUEST_SENSOR_COMMAND</span> <span class="o">=</span> <span class="s1">&#39;INSERT SENSOR COMMAND :&#39;</span>
+    <span class="n">REQUEST_MEASURE_TYPE</span> <span class="o">=</span> <span class="s1">&#39;INSERT MEASURE TYPE :&#39;</span>
+
+
+    <span class="c1"># Messages from the masterboard.</span>
+
+    <span class="n">MESSAGE_PROGRAMMING_DONE</span> <span class="o">=</span> <span class="s1">&#39;PROGRAMMING DONE&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span> \
+        <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">MESSAGE_CONNECTED</span> <span class="o">=</span> <span class="s1">&#39;CONNECTED&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">MESSAGE_TRANSMISSION_COMPLETED</span> <span class="o">=</span> <span class="s1">&#39;TRANSMISSION COMPLETED&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">MESSAGE_SENSOR_FAILED</span> <span class="o">=</span> <span class="s1">&#39;SENSOR FAILED&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+    <span class="n">MESSAGE_PARAMETER_UPDATED</span> <span class="o">=</span> <span class="s1">&#39;PARAMETER UPDATED&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span></div>
+    <span class="n">MESSAGE_PARAMETER_ERROR</span> <span class="o">=</span> <span class="s1">&#39;PARAMETER ERROR&#39;</span> <span class="o">+</span> <span class="n">TERMINATOR_SEQ</span>
+
+
+<span class="c1"># PARAMETER VALUES</span>
+
+<div class="viewcode-block" id="ODR"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_protocol.ODR">[docs]</a><span class="k">class</span> <span class="nc">ODR</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Allowed parameters&#39; values for ODR.</span>
+<span class="sd">    Accelerometer&#39;s output data rate.&quot;&quot;&quot;</span>
+    <span class="n">ODR_6660</span> <span class="o">=</span> <span class="mi">6660</span>
+    <span class="n">ODR_3330</span> <span class="o">=</span> <span class="mi">3330</span>
+    <span class="n">ODR_1660</span> <span class="o">=</span> <span class="mi">1660</span>
+    <span class="n">ODR_833</span> <span class="o">=</span> <span class="mi">833</span>
+    <span class="n">ODR_416</span> <span class="o">=</span> <span class="mi">416</span>
+    <span class="n">ODR_208</span> <span class="o">=</span> <span class="mi">208</span>
+    <span class="n">ODR_104</span> <span class="o">=</span> <span class="mi">104</span>
+    <span class="n">ODR_52</span> <span class="o">=</span> <span class="mi">52</span>
+    <span class="n">ODR_26</span> <span class="o">=</span> <span class="mi">26</span></div>
+    <span class="n">ODR_13</span> <span class="o">=</span> <span class="mi">13</span>
+
+
+<div class="viewcode-block" id="FLS"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_protocol.FLS">[docs]</a><span class="k">class</span> <span class="nc">FLS</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Allowed parameters&#39; values for FLS.</span>
+<span class="sd">    Accelerometer&#39;s full scale.&quot;&quot;&quot;</span>
+    <span class="n">FLS_2</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">FLS_4</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">FLS_8</span> <span class="o">=</span> <span class="mi">8</span></div>
+    <span class="n">FLS_16</span> <span class="o">=</span> <span class="mi">16</span>
+
+
+<div class="viewcode-block" id="SZE"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_protocol.SZE">[docs]</a><span class="k">class</span> <span class="nc">SZE</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Allowed parameters&#39; values for SZE.</span>
+<span class="sd">    Accelerometer&#39;s input array size for FFT.&quot;&quot;&quot;</span>
+    <span class="n">SZE_256</span> <span class="o">=</span> <span class="mi">256</span>
+    <span class="n">SZE_512</span> <span class="o">=</span> <span class="mi">512</span>
+    <span class="n">SZE_1024</span> <span class="o">=</span> <span class="mi">1024</span></div>
+    <span class="n">SZE_2048</span> <span class="o">=</span> <span class="mi">2048</span>
+
+
+<div class="viewcode-block" id="SUB"><a class="viewcode-back" href="../../../wire_st_sdk.iolink.html#wire_st_sdk.iolink.iolink_protocol.SUB">[docs]</a><span class="k">class</span> <span class="nc">SUB</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Allowed parameters&#39; values for SUB.</span>
+<span class="sd">    Accelerometer&#39;s number of subranges.&quot;&quot;&quot;</span>
+    <span class="n">SUB_8</span> <span class="o">=</span> <span class="mi">8</span>
+    <span class="n">SUB_16</span> <span class="o">=</span> <span class="mi">16</span>
+    <span class="n">SUB_32</span> <span class="o">=</span> <span class="mi">32</span></div>
+    <span class="n">SUB_64</span> <span class="o">=</span> <span class="mi">64</span>
+
+
+<span class="c1"># Allowed parameters&#39; values for ACQ. </span>
+<span class="c1"># Accelerometer&#39;s total acquisition time.</span>
+<span class="n">ACQ_MIN</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">ACQ_MAX</span> <span class="o">=</span> <span class="mi">60000</span>
+
+
+<span class="c1"># Allowed parameters&#39; values for OVL.</span>
+<span class="c1"># Accelerometer&#39;s overlapping percentage between two consecutive FFT analysis.</span>
+<span class="n">OVL_MIN</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">OVL_MAX</span> <span class="o">=</span> <span class="mi">95</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Davide Aliprandi.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'1.0.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
