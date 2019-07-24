@@ -2,7 +2,6 @@ README.md
 setup.cfg
 setup.py
 wire_st_sdk/__init__.py
-wire_st_sdk/python_utils.py
 wire_st_sdk.egg-info/PKG-INFO
 wire_st_sdk.egg-info/SOURCES.txt
 wire_st_sdk.egg-info/dependency_links.txt
@@ -13,4 +12,5 @@ wire_st_sdk/iolink/iolink_master.py
 wire_st_sdk/iolink/iolink_protocol.py
 wire_st_sdk/iolink/iolink_sensor.py
 wire_st_sdk/utils/__init__.py
+wire_st_sdk/utils/python_utils.py
 wire_st_sdk/utils/wire_st_exceptions.py
