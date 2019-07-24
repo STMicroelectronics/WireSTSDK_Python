@@ -46,9 +46,9 @@ from datetime import datetime
 
 from wire_st_sdk.iolink.iolink_protocol import IOLinkProtocol
 from wire_st_sdk.iolink.iolink_sensor import IOLinkSensor
-from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
-from wire_st_sdk.python_utils import lock
-from wire_st_sdk.python_utils import lock_for_object
+from wire_st_sdk.utils.wire_st_exceptions import WireSTInvalidOperationException
+from wire_st_sdk.utils.python_utils import lock
+from wire_st_sdk.utils.python_utils import lock_for_object
 
 
 # CLASSES
@@ -81,8 +81,8 @@ class IOLinkMaster(object):
 
         Args:
             serial_port (Serial): Serial Port object. Refer to
-                `Serial <https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial>`_
-                for more information.
+            `Serial <https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial>`_
+            for more information.
         """
     
         self._serial_port = serial_port
@@ -116,7 +116,7 @@ class IOLinkMaster(object):
 
         Args:
             new_status (:class:`wire_st_sdk.iolink.master.IOLinkMasterStatus`):
-                New status.
+            New status.
         """
         old_status = self._status
         self._status = new_status
@@ -145,7 +145,7 @@ class IOLinkMaster(object):
         Args:
             command (str): Command to perform.
             expected_answer (str): Expected answer to check after performing the
-                command.
+            command.
 
         Returns:
             bool: True if the command has been executed correctly, False
@@ -153,14 +153,17 @@ class IOLinkMaster(object):
 
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
-                something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
-                is raised if the command has not been executed successfully.
+            something with the serial communication does not work.
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
+            is raised if the command has not been executed successfully.
         """
         try:
-            with lock_for_object(self):
+            # Encoding string to bytes (Python 3).
+            command = command.encode('utf-8') if command else command
+            expected_answer = expected_answer.encode('utf-8') if expected_answer \
+                else expected_answer
 
-                #print('---> %s %s' % ((command, expected_answer)))
+            with lock_for_object(self):
 
                 # Delay.
                 time.sleep(self._SERIAL_PORT_RW_DELAY_s)
@@ -178,20 +181,20 @@ class IOLinkMaster(object):
                 if expected_answer:
                     if not (command == IOLinkProtocol.COMMAND_MEAS1_4 and \
                         IOLinkProtocol.BYTES_TRANSMISSION):
-                        self._answer = ''
+                        self._answer = b''
                         while True:
                             self._answer += \
                                 self._serial_port.read_until(expected_answer)
                             if expected_answer in self._answer:
                                 return True
-                            if IOLinkProtocol.MESSAGE_SENSOR_FAILED in \
-                                self._answer or \
-                                IOLinkProtocol.MESSAGE_PARAMETER_UPDATED in \
-                                self._answer:
+                            if IOLinkProtocol.MESSAGE_SENSOR_FAILED.encode('utf-8') \
+                                in self._answer \
+                                or IOLinkProtocol.MESSAGE_PARAMETER_UPDATED.encode('utf-8') \
+                                in self._answer:
                                 return False
                     else:
                         USE_ACK = False
-                        self._answer = ''
+                        self._answer = b''
                         n = IOLinkSensor._SIZE_OF_FDM * \
                             IOLinkSensor._SIZE_OF_FLOAT_bytes
                         attempts = self._FDM_ATTEMPTS
@@ -201,16 +204,20 @@ class IOLinkMaster(object):
                                 attempts = self._FDM_ATTEMPTS
                                 self._answer += data
                                 if USE_ACK:
-                                    self._serial_port.write(IOLinkProtocol.ACK)
+                                    self._serial_port.write(
+                                        IOLinkProtocol.ACK.encode('utf-8'))
                                     self._serial_port.flush()
                             else:
                                 if USE_ACK:
-                                    self._serial_port.write(IOLinkProtocol.NACK)
+                                    self._serial_port.write(
+                                        IOLinkProtocol.NACK.encode('utf-8'))
                                     self._serial_port.flush()
                                     attempts -= 1
-                                    print('Trying again...(%d)' % (attempts))
+                                    #print('Trying again...(%d)' % (attempts))
                                 else:
                                     return False
+                            # Constant '1024' to be substituted with number of
+                            # lines parameter.
                             if len(self._answer) == 1024 * n:
                                 while True:
                                     self._answer += \
@@ -221,12 +228,14 @@ class IOLinkMaster(object):
                         return False
 
                 # Blocking read.
-                # self._answer = ''
+                # self._answer = b''
                 # if expected_answer:
                 #     while expected_answer not in self._answer:
                 #         self._answer += self._serial_port.read_until(expected_answer)
-                #         if IOLinkProtocol.MESSAGE_SENSOR_FAILED in self._answer or \
-                #             IOLinkProtocol.MESSAGE_PARAMETER_UPDATED in self._answer:
+                #         if IOLinkProtocol.MESSAGE_SENSOR_FAILED.encode('utf-8') \
+                #             in self._answer \
+                #             or IOLinkProtocol.MESSAGE_PARAMETER_UPDATED.encode('utf-8') \
+                #             in self._answer:
                 #             # Sensor has already been rebooted.
                 #             return False
 
@@ -235,15 +244,27 @@ class IOLinkMaster(object):
                 # while expected_answer not in self._answer:
                 #     while (self._serial_port.in_waiting > 0):
                 #         self._answer += self._serial_port.read(self._serial_port.in_waiting)
-                #     if IOLinkProtocol.MESSAGE_SENSOR_FAILED in self._answer or \
-                #              IOLinkProtocol.MESSAGE_PARAMETER_UPDATED in self._answer:
-                #              return False
+                #     if IOLinkProtocol.MESSAGE_SENSOR_FAILED.encode('utf-8') \
+                #         in self._answer \
+                #         or IOLinkProtocol.MESSAGE_PARAMETER_UPDATED.encode('utf-8') \
+                #         in self._answer:
+                #         return False
 
                 return True
 
         except (SerialException, SerialTimeoutException,
-            WireInvalidOperationException) as e:
+            WireSTInvalidOperationException) as e:
             raise e
+
+    def _get_answer(self):
+        """Get the last answer received on the serial port when executing a
+        command.
+
+        Returns:
+            bytes: The last answer received on the serial port when executing a
+            command.
+        """
+        return self._answer
 
     def connect(self):
         """Start the communication between the masterboard and the host to which
@@ -254,9 +275,9 @@ class IOLinkMaster(object):
 
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
-                something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
-                is raised if the command has not been executed successfully.
+            something with the serial communication does not work.
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
+            is raised if the command has not been executed successfully.
         """
         try:
 
@@ -275,7 +296,8 @@ class IOLinkMaster(object):
                 self._execute(IOLinkProtocol.COMMAND_START,
                     IOLinkProtocol.REQUEST_MOD)
 
-                connection_answer = "\r\n" + self._answer[: \
+                connection_answer = IOLinkProtocol.TERMINATOR_SEQ.encode('utf-8') \
+                    + self._answer[: \
                     - len(IOLinkProtocol.REQUEST_MOD) \
                     - len(IOLinkProtocol.TERMINATOR_SEQ)]
 
@@ -324,8 +346,10 @@ class IOLinkMaster(object):
                     self._execute(None, IOLinkProtocol.TERMINATOR_SEQ)
 
                     # Handling sensor error.
-                    if IOLinkProtocol.MESSAGE_SENSOR_FAILED in self._answer or \
-                        IOLinkProtocol.MESSAGE_PARAMETER_UPDATED in self._answer:
+                    if IOLinkProtocol.MESSAGE_SENSOR_FAILED.encode('utf-8') \
+                        in self._get_answer() \
+                        or IOLinkProtocol.MESSAGE_PARAMETER_UPDATED.encode('utf-8') \
+                        in self._get_answer():
                         # Sensor has already been rebooted.
                         #print('Rebooting sensor...')
                         #print('---> "MCU" KO: \"%s\"' % (self._answer[:-2]))
@@ -335,8 +359,9 @@ class IOLinkMaster(object):
 
                     # Getting device's identifier, build devices' map, and
                     # waiting for transmission completed.
-                    device_id = self.get_answer()[:
-                        - len(IOLinkProtocol.TERMINATOR_SEQ)].strip()
+                    device_id = self._get_answer()[:
+                        - len(IOLinkProtocol.TERMINATOR_SEQ)
+                        ].strip().decode('utf-8')
 
                     self._devices[device_position] = device_id
 
@@ -359,10 +384,10 @@ class IOLinkMaster(object):
                 # Updating status.
                 self._update_master_status(IOLinkMasterStatus.CONNECTED)
 
-                return self._answer
+                return self._get_answer()
 
         except (SerialException, SerialTimeoutException,
-            WireInvalidOperationException) as e:
+            WireSTInvalidOperationException) as e:
             raise e
 
     def disconnect(self):
@@ -371,7 +396,7 @@ class IOLinkMaster(object):
 
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
-                something with the serial communication does not work.
+            something with the serial communication does not work.
         """
         try:
             if not self.is_connected():
@@ -402,7 +427,7 @@ class IOLinkMaster(object):
         Returns:
             bool: True if the master is connected, False otherwise.
         """
-        return self._answer == IOLinkMasterStatus.CONNECTED
+        return self._get_answer() == IOLinkMasterStatus.CONNECTED
 
     def get_device(self, device_id, device_name=None):
         """Configure and get a connected device.
@@ -417,15 +442,16 @@ class IOLinkMaster(object):
             otherwise.
 
         Raises:
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
                 is raised if the command has not been executed successfully.
         """
         # Creating the device.
         try:
             with lock_for_object(self):
-                if self.get_answer() == None:
-                    raise WireInvalidOperationException('Before trying to get a \
-                        device, connect to the masterboard.')
+                if self._get_answer() == None:
+                    msg = '\nBefore trying to get a device, connect to the '\
+                        'masterboard.'
+                    raise WireSTInvalidOperationException(msg)
 
                 if device_id in self._devices_id_position_map:
                     device_position = self._devices_id_position_map[device_id]
@@ -434,7 +460,7 @@ class IOLinkMaster(object):
 
                 return None
 
-        except WireInvalidOperationException as e:
+        except WireSTInvalidOperationException as e:
             raise e
 
     def get_device_by_position(self, device_position, device_name=None):
@@ -442,7 +468,7 @@ class IOLinkMaster(object):
 
         Args:
             device_position (int): Device's position according to the
-                enumeration on the masterboard.
+            enumeration on the masterboard.
             device_name (str): Device's name.
 
         Returns:
@@ -451,16 +477,17 @@ class IOLinkMaster(object):
             position, None otherwise.
 
         Raises:
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
-                is raised if the command has not been executed successfully.
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
+            is raised if the command has not been executed successfully.
             :exc:`ValueError` if the device position is not allowed.
         """
         # Creating the device.
         try:
             with lock_for_object(self):
-                if self.get_answer() == None:
-                    raise WireInvalidOperationException('Before trying to get a \
-                        device, connect to the masterboard.')
+                if self._get_answer() == None:
+                    msg = '\nBefore trying to get a device, connect to the '\
+                        'masterboard.'
+                    raise WireSTInvalidOperationException(msg)
 
                 if device_position not in range(1, self._NUMBER_OF_DEVICES + 1):
                     raise ValueError('Device\'s position must be in range ' \
@@ -473,21 +500,16 @@ class IOLinkMaster(object):
 
                 return None
 
-        except WireInvalidOperationException as e:
+        except WireSTInvalidOperationException as e:
             raise e
-
-    def get_answer(self):
-        """Get the last answer received on the serial port when executing a
-        command."""
-        return self._answer
 
     def get_port(self):
         """Get the serial port of the masterboard.
 
         Returns:
             Serial: Serial Port object. Refer to
-                `Serial <https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial>`_
-                for more information.
+            `Serial <https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial>`_
+            for more information.
         """
         return self._serial_port
 
@@ -496,7 +518,7 @@ class IOLinkMaster(object):
         
         Args:
             listener (:class:`wire_st_sdk.iolink.MasterListener`): Listener to
-                be added.
+            be added.
         """
         if listener is not None:
             with lock(self):
@@ -508,7 +530,7 @@ class IOLinkMaster(object):
 
         Args:
             listener (:class:`wire_st_sdk.iolink.MasterListener`): Listener to
-                be removed.
+            be removed.
         """
         if listener is not None:
             with lock(self):
@@ -549,11 +571,11 @@ class IOLinkMasterListener(object):
 
         Args:
             masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard
-                that has changed its status.
+            that has changed its status.
             new_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): New
-                status.
+            status.
             old_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): Old
-                status.
+            status.
 
         Raises:
             'NotImplementedError' is raised if the method is not implemented.
@@ -567,7 +589,7 @@ class IOLinkMasterListener(object):
 
         Args:
             masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard
-                that has found a new device.
+            that has found a new device.
             device_id (str): New device found.
             device_position (int): Position of the new device found.
 

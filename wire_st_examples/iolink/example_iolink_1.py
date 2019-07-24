@@ -57,7 +57,7 @@ import wire_st_sdk.iolink.iolink_protocol as iolink_protocol
 from wire_st_sdk.iolink.iolink_master import IOLinkMaster
 from wire_st_sdk.iolink.iolink_master import IOLinkMasterListener
 from wire_st_sdk.iolink.iolink_device import IOLinkDevice
-from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
+from wire_st_sdk.utils.wire_st_exceptions import WireSTInvalidOperationException
 
 
 # PRECONDITIONS
@@ -107,11 +107,11 @@ class MyIOLinkMasterListener(IOLinkMasterListener):
     # To be called whenever a masterboard changes its status.
     #
     # @param masterboard IOLinkMaster instance that has changed its status.
-    # @param new_status New masterboard status.
-    # @param old_status Old masterboard status.
+    # @param new_status New status.
+    # @param old_status Old status.
     #
     def on_status_change(self, masterboard, new_status, old_status):
-        print('Masterboard on port %s from %s to %s.' %
+        print('Masterboard on port \"%s\" from \"%s\" to \"%s\".' %
             (masterboard.get_port().port, str(old_status), str(new_status)))
 
     #
@@ -122,8 +122,8 @@ class MyIOLinkMasterListener(IOLinkMasterListener):
     # @param device_position (int): Position of the new device found.
     #
     def on_device_found(self, masterboard, device_id, device_position):
-        print('Masterboard on port %s has found device %s on position %d.' %
-            (masterboard.get_port().port, device_id, device_position))  
+        print('Masterboard on port \"%s\" found device \"%s\" on position \"%d\".' %
+            (masterboard.get_port().port, device_id, device_position))
 
 
 # MAIN APPLICATION
@@ -148,15 +148,15 @@ def main(argv):
         serial_port.write_timeout = None
 
         # Initializing an IO-Link Masterboard and connecting it to the host.
-        print('\nInitializing Masterboard on port %s with a baud rate of %d ' \
-            '[b/s]...' % (serial_port.port, serial_port.baudrate))
+        print('\nInitializing Masterboard on port \"%s\" with a baud rate of ' \
+            '\"%d\" [b/s]...' % (serial_port.port, serial_port.baudrate))
         master = IOLinkMaster(serial_port)
         master_listener = MyIOLinkMasterListener()
         master.add_listener(master_listener)
         status = master.connect()
 
         # Initializing IO-Link Devices.
-        print('Initializing IO-Link Devices...')
+        print('\nInitializing IO-Link Devices...')
         devices = []
         devices.append(master.get_device(IOT_DEVICE_1_ID))
         devices.append(master.get_device(IOT_DEVICE_2_ID))
@@ -172,7 +172,7 @@ def main(argv):
 
         # Getting information about devices.
         for device in devices:
-            print('Device %d:' % (device.get_position()))
+            print('Device \"%d\":' % (device.get_position()))
             print('\tDevice Id:\n\t\t\"%s\"' % (device.get_id()))
             print('\tFirmware:\n\t\t\"%s\"' % (device.get_firmware()))
             print('\tFeatures:\n\t\t%s' % (device.get_features()))
@@ -209,7 +209,7 @@ def main(argv):
 
         # Getting measures from devices.
         for device in devices:
-            print('Device %d:' % (device.get_position()))
+            print('Device \"%d\":' % (device.get_position()))
             print('\tEnvironmental data (P[mbar], H[%%], T[C]):\n\t\t%s' \
                 % (device.get_env()))
             print('\tTime domain data, RMS Speed [mm/s] and Peak Acceleration' \
@@ -225,7 +225,7 @@ def main(argv):
         sys.exit(0)
 
 
-    except (WireInvalidOperationException, \
+    except (WireSTInvalidOperationException, \
         SerialException, SerialTimeoutException, \
         ValueError) as e:
         print(e)

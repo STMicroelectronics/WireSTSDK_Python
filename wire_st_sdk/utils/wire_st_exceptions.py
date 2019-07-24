@@ -34,7 +34,7 @@ The wire_st_exceptions module defines exceptions raised by the WireSTSDK.
 
 # CLASSES
 
-class WireInvalidOperationException(Exception):
+class WireSTInvalidOperationException(Exception):
     """Exception raised whenever a command is not executed successfully."""
 
     def __init__(self, msg):
@@ -43,4 +43,4 @@ class WireInvalidOperationException(Exception):
         Args:
             msg (str): The message to raise.
         """
-        super(WireInvalidOperationException, self).__init__(msg)
+        super(WireSTInvalidOperationException, self).__init__(msg)

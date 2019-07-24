@@ -8,24 +8,24 @@ Documentation can be found [here](https://stmicroelectronics.github.io/WireSTSDK
 
 
 ## Compatibility
-This version of the SDK is compatible with [Python](https://www.python.org/) 2.7 and runs on a Linux system.
+This version of the SDK is compatible with [Python](https://www.python.org/) 3.5 and runs on a Linux system.
 
 
 ## Preconditions
 The WireST SDK makes use of the [pySerial](https://github.com/pyserial/pyserial) Python interface to serial ports on Linux.
   ```Shell
-  $ sudo pip install pyserial
+  $ sudo pip3 install pyserial
   ```
 Moreover, it uses the [concurrent.futures](https://docs.python.org/3/library/concurrent.futures.html) module to run pools of threads in background, that serve listeners' callbacks.
   ```Shell
-  $ sudo pip install futures
+  $ sudo pip3 install futures
   ```
 
 
 ## Installation
 The WireST SDK can be installed through the Python pip package manager.
   ```Shell
-  $ sudo pip install wire-st-sdk
+  $ sudo pip3 install wire-st-sdk
   ```
 
 
@@ -45,7 +45,7 @@ To run the application examples please follow the steps below:
     ```
  3. Enter the "wire_st_examples/iolink" folder and run the desired script:
     ```Shell
-    $ sudo python example_iolink_x.py
+    $ sudo python3 example_iolink_x.py
     ```
 
 

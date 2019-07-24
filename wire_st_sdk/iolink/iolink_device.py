@@ -39,8 +39,8 @@ from serial import SerialException
 from serial import SerialTimeoutException
 
 from wire_st_sdk.iolink.iolink_protocol import IOLinkProtocol
-from wire_st_sdk.utils.wire_st_exceptions import WireInvalidOperationException
-from wire_st_sdk.python_utils import lock_for_object
+from wire_st_sdk.utils.wire_st_exceptions import WireSTInvalidOperationException
+from wire_st_sdk.utils.python_utils import lock_for_object
 
 
 # CLASSES
@@ -56,9 +56,9 @@ class IOLinkDevice(object):
 
         Args:
             master (:class:`wire_st_sdk.iolink.iolink_master.IOLinkMaster`):
-                Masterboard object.
+            Masterboard object.
             position (int): Device's position according to the enumeration on
-                the masterboard.
+            the masterboard.
             id (str): Device's identifier.
             name (str): Device's name.
         """
@@ -109,9 +109,9 @@ class IOLinkDevice(object):
 
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
-                something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
-                is raised if the command has not been executed successfully.
+            something with the serial communication does not work.
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
+            is raised if the command has not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -125,7 +125,7 @@ class IOLinkDevice(object):
                 self._master._execute(IOLinkProtocol.COMMAND_ID,
                     IOLinkProtocol.MESSAGE_CONNECTED)
                 
-                info = self._master.get_answer()[
+                info = self._master._get_answer().decode('utf-8')[
                     len(IOLinkProtocol.TERMINATOR_SEQ): \
                     - len(IOLinkProtocol.MESSAGE_CONNECTED) \
                     - 2 * len(IOLinkProtocol.TERMINATOR_SEQ)]
@@ -138,7 +138,7 @@ class IOLinkDevice(object):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            WireInvalidOperationException) as e:
+            WireSTInvalidOperationException) as e:
             raise e
 
     def get_firmware(self):
@@ -149,9 +149,9 @@ class IOLinkDevice(object):
 
         Raises:
             'SerialException' or 'SerialTimeoutException' are raised if
-                something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireInvalidOperationException`
-                is raised if the command has not been executed successfully.
+            something with the serial communication does not work.
+            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
+            is raised if the command has not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -165,7 +165,7 @@ class IOLinkDevice(object):
                 self._master._execute(IOLinkProtocol.COMMAND_ID,
                     IOLinkProtocol.MESSAGE_CONNECTED)
                 
-                info = self._master.get_answer()[
+                info = self._master._get_answer().decode('utf-8')[
                     len(IOLinkProtocol.TERMINATOR_SEQ): \
                     - len(IOLinkProtocol.MESSAGE_CONNECTED) \
                     - 2 * len(IOLinkProtocol.TERMINATOR_SEQ)]
@@ -177,5 +177,5 @@ class IOLinkDevice(object):
                 return info
 
         except (SerialException, SerialTimeoutException,
-            WireInvalidOperationException) as e:
+            WireSTInvalidOperationException) as e:
             raise e

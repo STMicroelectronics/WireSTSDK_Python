@@ -6,7 +6,7 @@ SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 SPHINXPROJ    = WireSTSDK
 SOURCEDIR     = source
-BUILDDIR      = ../../WireSTSDK_Python-docs
+BUILDDIR      = ../../WireSTSDK_Python-docs/
 
 # Put it first so that "make" without argument is like "make help".
 help:
