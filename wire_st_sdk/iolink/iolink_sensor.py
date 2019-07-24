@@ -76,17 +76,16 @@ class IOLinkSensor(IOLinkDevice):
     def _get_measure(self, measure):
         """Execute a 'get' measure command.
 
-        Args:
-            measure (str): The measure command to execute.
+        :param measure: The measure command to execute.
+        :type measure: str
 
-        Returns:
-            list: A list with the result of the executed measure command.
+        :returns: A list with the result of the executed measure command.
+        :rtype: list
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -135,12 +134,14 @@ class IOLinkSensor(IOLinkDevice):
         """Converts an array of bytes to floating point numbers in Little Endian
         order (four bytes per number).
 
-        Args:
-            data (str): Input array of bytes that contains the values to convert.
-            precision (int): Number of digits after the decimal point.
+        :param data: Input array of bytes that contains the values to convert.
+        :type data: str
 
-        Returns:
-            list: A list of floating point numbers.
+        :param precision: Number of digits after the decimal point.
+        :type precision: int
+
+        :returns: A list of floating point numbers.
+        :rtype: list
         """
         # Python 2
         # return [round(
@@ -156,15 +157,14 @@ class IOLinkSensor(IOLinkDevice):
     def get_env(self):
         """Get environmental data.
 
-        Returns:
-            list: A list with Pressure [mbar], Humidity [%], and Temperature [C]
+        :returns: A list with Pressure [mbar], Humidity [%], and Temperature [C]
             values.
+        :rtype: list
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -198,16 +198,15 @@ class IOLinkSensor(IOLinkDevice):
     def get_tdm(self):
         """Get time domain data.
 
-        Returns:
-            list: A two-elements list, with a list of RMS Speed values on X,Y,Z
+        :returns: A two-elements list, with a list of RMS Speed values on X,Y,Z
             axes [mm/s] as the first element, and a list of Peak Acceleration
             values on X,Y,Z axes [m/s2] as the second element.
+        :rtype: list
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -242,16 +241,15 @@ class IOLinkSensor(IOLinkDevice):
     def get_fft(self):
         """Get Fast Fourier Transform of vibration data.
 
-        Returns:
-            list: A n-elements list, with each element being a list of four
+        :returns: A n-elements list, with each element being a list of four
             values: the first is a frequency [Hz] and the other three are the
             corresponding vibration values on the three axis [m/s2].
+        :rtype: list
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -290,18 +288,19 @@ class IOLinkSensor(IOLinkDevice):
     def _set_parameter(self, parameter, value):
         """Execute a 'set' parameter command.
 
-        Args:
-            parameter (str): The parameter command to execute.
-            value (str): The parameter value to set.
+        :param parameter: The parameter command to execute.
+        :type parameter: str
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :param value: The parameter value to set.
+        :type value: str
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
+
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -340,18 +339,16 @@ class IOLinkSensor(IOLinkDevice):
     def set_odr(self, odr):
         """Set accelerometer's output data rate.
 
-        Args:
-            odr (:class:`wire_st_sdk.iolink.iolink_protocol.ODR`):
-            accelerometer's output data rate.
+        :param odr: Accelerometer's output data rate.
+        :type odr: :class:`wire_st_sdk.iolink.iolink_protocol.ODR`
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -366,18 +363,16 @@ class IOLinkSensor(IOLinkDevice):
     def set_fls(self, fls):
         """Set accelerometer's full scale.
 
-        Args:
-            fls (:class:`wire_st_sdk.iolink.iolink_protocol.FLS`):
-            accelerometer's full scale.
+        :param fls: Accelerometer's full scale.
+        :type fls: :class:`wire_st_sdk.iolink.iolink_protocol.FLS`
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -392,18 +387,16 @@ class IOLinkSensor(IOLinkDevice):
     def set_sze(self, sze):
         """Set accelerometer's input array size for FFT.
 
-        Args:
-            sze (:class:`wire_st_sdk.iolink.iolink_protocol.SZE`):
-            accelerometer's input array size for FFT.
+        :param sze: Accelerometer's input array size for FFT.
+        :type sze: :class:`wire_st_sdk.iolink.iolink_protocol.SZE`
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -418,18 +411,16 @@ class IOLinkSensor(IOLinkDevice):
     def set_sub(self, sub):
         """Set accelerometer's number of subranges.
 
-        Args:
-            sub (:class:`wire_st_sdk.iolink.iolink_protocol.SUB`): number of
-            subranges.
+        :param sub: Number of subranges.
+        :type sub: :class:`wire_st_sdk.iolink.iolink_protocol.SUB`
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -445,18 +436,17 @@ class IOLinkSensor(IOLinkDevice):
         """Set accelerometer's total acquisition time, which is valid for all
         types of analysis.
 
-        Args:
-            acq (int): accelerometer's total acquisition time (must be in the
-            range [ACQ_MIN..ACQ_MAX]).
+        :param acq: Accelerometer's total acquisition time (must be in the range
+            [ACQ_MIN..ACQ_MAX]).
+        :type acq: int
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -473,18 +463,17 @@ class IOLinkSensor(IOLinkDevice):
         """Set accelerometer's overlapping percentage between two consecutive
         FFT analysis.
 
-        Args:
-            ovl (int): accelerometer's overlapping percentage between two
+        :param ovl: Accelerometer's overlapping percentage between two
             consecutive FFT analysis (must be in the range [OVL_MIN..OVL_MAX]).
+        :type ovl: int
 
-        Returns:
-            bool: True if the parameter has been set correctly, False otherwise.
+        :returns: True if the parameter has been set correctly, False otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):

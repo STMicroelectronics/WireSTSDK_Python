@@ -79,10 +79,10 @@ class IOLinkMaster(object):
     def __init__(self, serial_port):
         """Constructor.
 
-        Args:
-            serial_port (Serial): Serial Port object. Refer to
+        :param serial_port: Serial Port object. Refer to
             `Serial <https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial>`_
             for more information.
+        :type serial_port: Serial
         """
     
         self._serial_port = serial_port
@@ -114,9 +114,8 @@ class IOLinkMaster(object):
     def _update_master_status(self, new_status):
         """Update the status of the master.
 
-        Args:
-            new_status (:class:`wire_st_sdk.iolink.master.IOLinkMasterStatus`):
-            New status.
+        :param new_status: New status.
+        :type new_status: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus`
         """
         old_status = self._status
         self._status = new_status
@@ -129,9 +128,11 @@ class IOLinkMaster(object):
     def _update_master_device(self, device_id, device_position):
         """Update about the new device found.
 
-        Args:
-            device_id (str): New device found.
-            device_position (int): Position of the new device found.
+        :param device_id: New device found.
+        :type device_id: str
+
+        :param device_position: Position of the new device found.
+        :type device_position: int
         """
         for listener in self._listeners:
             # Calling user-defined callback.
@@ -142,19 +143,21 @@ class IOLinkMaster(object):
     def _execute(self, command=None, expected_answer=None):
         """Execute a command and check the status.
 
-        Args:
-            command (str): Command to perform.
-            expected_answer (str): Expected answer to check after performing the
+        :param command: Command to perform.
+        :type command: str
+
+        :param expected_answer: Expected answer to check after performing the
             command.
+        :type expected_answer: str
 
-        Returns:
-            bool: True if the command has been executed correctly, False
+        :returns: True if the command has been executed correctly, False
             otherwise.
+        :rtype: bool
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+
+        :raises WireSTInvalidOperationException:
             is raised if the command has not been executed successfully.
         """
         try:
@@ -260,9 +263,9 @@ class IOLinkMaster(object):
         """Get the last answer received on the serial port when executing a
         command.
 
-        Returns:
-            bytes: The last answer received on the serial port when executing a
+        :returns: The last answer received on the serial port when executing a
             command.
+        :rtype: bytes
         """
         return self._answer
 
@@ -270,14 +273,13 @@ class IOLinkMaster(object):
         """Start the communication between the masterboard and the host to which
         it is connected.
         
-        Returns:
-            str: The status of the connection.
+        :returns: The status of the connection.
+        :rtype: str
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
 
@@ -394,9 +396,8 @@ class IOLinkMaster(object):
         """End the communication between the masterboard and the host to which
         it is connected.
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
         """
         try:
             if not self.is_connected():
@@ -424,26 +425,26 @@ class IOLinkMaster(object):
     def is_connected(self):
         """Check whether the master is connected.
 
-        Returns:
-            bool: True if the master is connected, False otherwise.
+        :returns: True if the master is connected, False otherwise.
+        :rtype: bool
         """
         return self._get_answer() == IOLinkMasterStatus.CONNECTED
 
     def get_device(self, device_id, device_name=None):
         """Configure and get a connected device.
 
-        Args:
-            device_id (str): Device's identifier.
-            device_name (str): Device's name.
+        :param device_id: Device's identifier.
+        :type device_id: str
 
-        Returns:
-            :class:`wire_st_sdk.iolink.iolink_device.IOLinkDevice`: IOLink
-            connected device if the device identifier is correct, None
-            otherwise.
+        :param device_name: Device's name.
+        :type device_name: str
 
-        Raises:
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-                is raised if the command has not been executed successfully.
+        :returns: IOLink connected device if the device identifier is correct,
+            None otherwise.
+        :rtype: :class:`wire_st_sdk.iolink.iolink_device.IOLinkDevice`
+
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         # Creating the device.
         try:
@@ -466,20 +467,20 @@ class IOLinkMaster(object):
     def get_device_by_position(self, device_position, device_name=None):
         """Configure and get a connected device.
 
-        Args:
-            device_position (int): Device's position according to the
+        :param device_position: Device's position according to the
             enumeration on the masterboard.
-            device_name (str): Device's name.
+        :type device_position: int
 
-        Returns:
-            :class:`wire_st_sdk.iolink.iolink_device.IOLinkDevice`: IOLink
-            connected device if there is a device connected at the given device
-            position, None otherwise.
+        :param device_name: Device's name.
+        :type device_name: str
 
-        Raises:
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
-            :exc:`ValueError` if the device position is not allowed.
+        :returns: IOLink connected device if there is a device connected at the
+            given device position, None otherwise.
+        :rtype: :class:`wire_st_sdk.iolink.iolink_device.IOLinkDevice`
+
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
+        :raises ValueError: if the device position is not allowed.
         """
         # Creating the device.
         try:
@@ -506,19 +507,18 @@ class IOLinkMaster(object):
     def get_port(self):
         """Get the serial port of the masterboard.
 
-        Returns:
-            Serial: Serial Port object. Refer to
+        :returns: Serial Port object. Refer to
             `Serial <https://pyserial.readthedocs.io/en/latest/pyserial_api.html#serial.Serial>`_
             for more information.
+        :rtype: Serial
         """
         return self._serial_port
 
     def add_listener(self, listener):
         """Add a listener.
-        
-        Args:
-            listener (:class:`wire_st_sdk.iolink.MasterListener`): Listener to
-            be added.
+
+        :param listener: Listener to be added.
+        :type listener: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMasterListener`
         """
         if listener is not None:
             with lock(self):
@@ -528,9 +528,8 @@ class IOLinkMaster(object):
     def remove_listener(self, listener):
         """Remove a listener.
 
-        Args:
-            listener (:class:`wire_st_sdk.iolink.MasterListener`): Listener to
-            be removed.
+        :param listener: Listener to be removed.
+        :type listener: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMasterListener`
         """
         if listener is not None:
             with lock(self):
@@ -569,16 +568,16 @@ class IOLinkMasterListener(object):
     def on_status_change(self, masterboard, new_status, old_status):
         """To be called whenever a masterboard changes its status.
 
-        Args:
-            masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard
-            that has changed its status.
-            new_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): New
-            status.
-            old_status (:class:`wire_st_sdk.iolink.IOLinkMasterStatus`): Old
-            status.
+        :param masterboard: Masterboard that has changed its status.
+        :type masterboard: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMaster`
 
-        Raises:
-            'NotImplementedError' is raised if the method is not implemented.
+        :param new_status: New status.
+        :type new_status: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus`
+
+        :param old_status: Old status.
+        :type old_status: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMasterStatus`
+
+        :raises NotImplementedError: is raised if the method is not implemented.
         """
         raise NotImplementedError('You must define "on_status_change()" to use '
             'the "IOLinkMasterListener" class.')
@@ -587,14 +586,16 @@ class IOLinkMasterListener(object):
     def on_device_found(self, masterboard, device_id, device_position):
         """To be called whenever a masterboard finds a new device connected.
 
-        Args:
-            masterboard (:class:`wire_st_sdk.iolink.IOLinkMaster`): Masterboard
-            that has found a new device.
-            device_id (str): New device found.
-            device_position (int): Position of the new device found.
+        :param masterboard: Masterboard that has found a new device.
+        :type masterboard: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMaster`
 
-        Raises:
-            'NotImplementedError' is raised if the method is not implemented.
+        :param device_id: New device found.
+        :type device_id: str
+
+        :param device_position: Position of the new device found.
+        :type device_position: int
+
+        :raises NotImplementedError: is raised if the method is not implemented.
         """
         raise NotImplementedError('You must define "on_device_found()" to use '
             'the "IOLinkMasterListener" class.')

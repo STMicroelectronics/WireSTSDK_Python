@@ -54,13 +54,18 @@ class IOLinkDevice(object):
     def __init__(self, master, position, id, name=None):
         """Constructor.
 
-        Args:
-            master (:class:`wire_st_sdk.iolink.iolink_master.IOLinkMaster`):
-            Masterboard object.
-            position (int): Device's position according to the enumeration on
-            the masterboard.
-            id (str): Device's identifier.
-            name (str): Device's name.
+        :param master: Masterboard object.
+        :type master: :class:`wire_st_sdk.iolink.iolink_master.IOLinkMaster`
+
+        :param position: Device's position according to the enumeration on the
+            masterboard.
+        :type position: int
+
+        :param id: Device's identifier.
+        :type id: str
+
+        :param name: Device's name.
+        :type name: str
         """
 
         self._master = master
@@ -79,39 +84,38 @@ class IOLinkDevice(object):
         """Get the device's position according to the enumeration on the
         masterboard.
 
-        Returns:
-            int: The device's position according to the enumeration on the
+        :returns: The device's position according to the enumeration on the
             masterboard.
+        :rtype: int
         """
         return self._position
 
     def get_id(self):
         """Get the device's identifier.
 
-        Returns:
-            str: The device's identifier.
+        :returns: The device's identifier.
+        :rtype: str
         """
         return self._id
 
     def get_name(self):
         """Get the device's name.
 
-        Returns:
-            str: The device's name.
+        :returns: The device's name.
+        :rtype: str
         """
         return self._name
 
     def get_features(self):
         """Get the list of features.
 
-        Returns:
-            list: A list with the available features.
+        :returns: A list with the available features.
+        :rtype: list
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
@@ -144,14 +148,13 @@ class IOLinkDevice(object):
     def get_firmware(self):
         """Get the version of the firmware.
 
-        Returns:
-            str: The version of the firmware as a string.
+        :returns: The version of the firmware as a string.
+        :rtype: str
 
-        Raises:
-            'SerialException' or 'SerialTimeoutException' are raised if
-            something with the serial communication does not work.
-            :exc:`wire_st_sdk.utils.wire_st_exceptions.WireSTInvalidOperationException`
-            is raised if the command has not been executed successfully.
+        :raises SerialException, SerialTimeoutException: are raised if something
+            with the serial communication does not work.
+        :raises WireSTInvalidOperationException: is raised if the command has
+            not been executed successfully.
         """
         try:
             with lock_for_object(self._master):
