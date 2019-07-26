@@ -1,12 +1,11 @@
-Metadata-Version: 1.1
+Metadata-Version: 2.1
 Name: wire-st-sdk
-Version: 1.2.1
+Version: 1.2.2
 Summary: Wired connection abstraction library package.
 Home-page: https://github.com/STMicroelectronics/WireSTSDK_Python
 Author: Davide Aliprandi
 Author-email: davide.aliprandi@gmail.com
 License: BSD 3-clause
-Description-Content-Type: text/markdown
 Description: # WireST SDK
         
         WireST SDK is a library for Linux gateways that allows easy access to the data exported by an IO-Link device that implements the [IOLinkST Protocol](https://github.com/STMicroelectronics/WireSTSDK_Python#IOLinkST-protocol).
@@ -89,3 +88,4 @@ Classifier: License :: OSI Approved :: BSD License
 Classifier: Operating System :: POSIX :: Linux
 Classifier: Programming Language :: Python :: 3.5
 Classifier: Topic :: Software Development :: Embedded Systems
+Description-Content-Type: text/markdown

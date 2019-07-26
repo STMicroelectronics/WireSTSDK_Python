@@ -182,8 +182,8 @@ class IOLinkMaster(object):
 
                 # Blocking read.
                 if expected_answer:
-                    if not (command == IOLinkProtocol.COMMAND_MEAS1_4 and \
-                        IOLinkProtocol.BYTES_TRANSMISSION):
+                    if not (command == IOLinkProtocol.COMMAND_MEAS1_4.encode('utf-8') \
+                        and IOLinkProtocol.BYTES_TRANSMISSION):
                         self._answer = b''
                         while True:
                             self._answer += \
