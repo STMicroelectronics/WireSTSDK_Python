@@ -1,4 +1,4 @@
-﻿# Contributing guide
+# Contributing guide
 
 This document serves as a checklist before contributing to this repository. It includes links to read up on if topics are unclear to you.
 
@@ -6,12 +6,12 @@ This guide mainly focuses on the proper use of Git.
 
 ## 1. Issues
 
-[ To be updated depending on your Issues policy ]
+If you find any problems, you can open an issue in the "Issues" section of the repository and provide a detailed description of the problem itself.
 
 
 ## 2. Pull Requests
 
-STMicrolectronics is happy to receive contributions from the community, based on an initial Contributor License Agreement (CLA) procedure.
+STMicroelectronics is happy to receive contributions from the community, based on an initial Contributor License Agreement (CLA) procedure.
 
 * If you are an individual writing original source code and you are sure you own the intellectual property, then you need to sign an Individual CLA (https://cla.st.com).
 * If you work for a company that wants also to allow you to contribute your work, your company needs to provide a Corporate CLA (https://cla.st.com) mentioning your GitHub account name.
